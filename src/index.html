@@ -13,8 +13,54 @@
     <title>BMI Calculator</title>
   </head>
   <body>
+
+    <h1 class="bmi-calculator-title">BMI Calculator</h1>
+    <p class="bmi-calculator-description">Enter the values and click the calculate button to get results.</p>
+
     <main id="main">
-      <div id="bmi-form-section"></div>
+      <div id="bmi-form-section">
+        
+        <form class="Bmi-form">
+
+          <label class="bmi-label" for="gender">Gender:</label>
+              <div class="bmi-gender-options">
+                <div class="bmi-gender-option" id="female" value="female">
+                  <span>♀</span>
+                  <label class="bmi-div-label" for="female">Female</label>
+                </div>
+                <div class="bmi-gender-option" id="male" value="male">
+                  <span>♂</span>
+                  <label class="bmi-div-label" for="male">Male</label>
+                </div>
+              </div>
+
+              <label class="bmi-label" for="age">Age:</label>
+        <input type="number" class="bmi-input" id="age" name="age" required>
+
+
+        <label class="bmi-label" for="height">Height:</label>
+        <input type="number" class="bmi-input" id="height" name="height" required>
+        <select class="bmi-select" id="height-unit" name="height-unit">
+          <option value="cm">cm</option>
+          <option value="in">in</option>
+        </select>
+
+        <label class="bmi-label" for="weight">Weight:</label>
+        <input type="number" class="bmi-input" id="weight" name="weight" required>
+        
+        <select class="bmi-select" id="weight-unit" name="weight-unit">
+          <option value="kg">kg</option>
+          <option value="lb">lb</option>
+        </select>
+
+         <div class="bmi-submit-btn" >
+        <button type="submit" >Calculate</button>
+      </div>
+          
+      </form>
+
+      </div>
+      
       <div id="bmi-results-section"></div>
     </main>
     <script type="application/javascript" src="index.js"></script>
