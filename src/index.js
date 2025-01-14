@@ -9,4 +9,5 @@ maleButton.addEventListener('click',(e)=>{
 femaleButton.addEventListener('click',(e)=>{
     femaleButton.classList.add("active-gender")
     maleButton.classList.remove("active-gender")
+    
 })
