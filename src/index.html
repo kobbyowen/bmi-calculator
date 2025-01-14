@@ -1,22 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Pyro Devs" />
-    <meta name="description" content="A simple BMI calculator" />
-    <meta
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content="Pyro Devs" />
+		<meta name="description" content="A simple BMI calculator" />
+		<meta
       name="keywords"
       content="weight, height , bmi, underweight, overweight, obese"
     />
-    <link rel="stylesheet" href="index.css" />
-    <title>BMI Calculator</title>
-  </head>
-  <body>
-    <main id="main">
-      <div id="bmi-form-section"></div>
-      <div id="bmi-results-section"></div>
-    </main>
-    <script type="application/javascript" src="index.js"></script>
-  </body>
+		<link rel="stylesheet" href="index.css" />
+		<title>BMI Calculator</title>
+	</head>
+	<body>
+    <div class="bmi-page-logo">Health & Fitness</div>
+		<main id="main">
+			<div id="bmi-form-section">
+				<div class="bmi-form-heading">
+					<h1 class="bmi-calculator-title">BMI Calculator</h1>
+					<p class="bmi-calculator-description">Enter the values and click the calculate button to get results.</p>
+				</div>
+				<form class="bmi-form">
+					<div class="bmi-form-field">
+						<div>
+							<label class="bmi-label" for="gender">Gender</label>
+						</div>
+						<div class="bmi-gender-options">
+							<button type="button" class="bmi-gender-option" id="female">♀ Female</button>
+							<button type="button" class="bmi-gender-option" id="male">♂ Male</button>
+						</div>
+					</div>
+					<div class="bmi-form-field">
+						<div>
+							<label class="bmi-label" for="age">Age</label>
+						</div>
+						<div>
+							<input type="number" class="bmi-input" id="age" name="age" required />
+						</div>
+					</div>
+					<div class="bmi-form-field">
+						<div>
+							<label class="bmi-label" for="height">Height</label>
+						</div>
+						<div>
+							<input type="number" class="bmi-input" id="height" name="height" step="0.01" required />
+							<select class="bmi-select" id="height-unit" name="height-unit">
+								<option value="cm">cm</option>
+								<option value="in">in</option>
+							</select>
+						</div>
+					</div>
+					<div class="bmi-form-field">
+						<div>
+							<label class="bmi-label" for="weight">Weight</label>
+						</div>
+						<div>
+							<input type="number" class="bmi-input" id="weight" name="weight" step="0.01" required />
+							<select class="bmi-select" id="weight-unit" name="weight-unit">
+								<option value="kg">kg</option>
+								<option value="lb">lb</option>
+							</select>
+						</div>
+					</div>
+					<div class="bmi-form-field">
+						<button type="submit">Calculate</button>
+					</div>
+				</form>
+			</div>
+			<div id="bmi-results-section"></div>
+		</main>
+		<script type="application/javascript" src="index.js"></script>
+	</body>
 </html>
