@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Host Grotesk', Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    background-color: #faf5f2;
+}
+
+
+main {
+    display: flex;
+    height: 100vh;
+    gap: 20px;
+}
+
+#bmi-results-section {
+    background-color: #fff;
+    margin: 50px;
+    width: 50%;
+    border-radius: 20px;
+
+}
+
+#bmi-form-section {
+    width: 50%;
+    color: #4e5357;
+}
+
+
+@media screen and (max-width: 600px) {
+    main {
+        display: block;
+        width: 100vw;
+        margin: auto;
+
+    }
+
+    #bmi-form-section {
+        margin: 0px;
+        padding: 10px;
+        height: 100%;
+    }
+
+    #bmi-results-section {
+        background-color: #fff;
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        border-radius: 0px;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    main {
+        width: 100vw;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        width: 85vw;
+        margin: auto;
+    }
+}
