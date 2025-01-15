@@ -19,6 +19,7 @@ main {
     display: flex;
     height: 92vh;
     gap: 20px;
+
 }
 
 #bmi-results-section {
@@ -66,20 +67,21 @@ main {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 60%;
+    /* width: 60%; */
 }
 
 .bmi-gender-option {
-    padding: 10px 20px;
+    /* padding: 10px 5px; */
     border-radius: 5px;
     border: 1px solid #00000065;
     background-color: #fff;
-    width: 38%;
+    width: 175px;
     margin-right: 10px;
 }
 
 .bmi-input {
-    width: 65%;
+    /* width: 65%; */
+    width: 310px;
     padding: 7px;
     border-radius: 5px;
     border: 1px solid #00000065;
@@ -87,7 +89,7 @@ main {
 }
 
 #age {
-    width: 80%;
+    width: 365px;
 }
 
 .bmi-select {
@@ -96,7 +98,7 @@ main {
 }
 
 button {
-    width: 80%;
+    width: 365px;
     padding: 15px;
     background-color: #fe6f61;
     border: none;
@@ -130,8 +132,17 @@ button {
 
 @media screen and (min-width: 768px) {
     main {
-        width: 100vw;
+        width: 85vw;
         margin: auto;
+    }
+
+    .bmi-gender-option {
+        /* padding: 10px 5px; */
+        border-radius: 5px;
+        border: 1px solid #00000065;
+        background-color: #fff;
+        min-width: 175px;
+        margin-right: 10px;
     }
 }
 
