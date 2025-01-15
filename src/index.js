@@ -54,9 +54,9 @@ calculateButton.addEventListener("click", (e) => {
   const formData = {
     gender,
     age: parseInt(ageValue),
-    height: parseInt(heightValue),
+    height: parseFloat(heightValue),
     heightUnit: heightUnitValue,
-    weight: parseInt(weightValue),
+    weight: parseFloat(weightValue),
     weightUnit: weightUnitValue,
   };
   console.log(formData);
