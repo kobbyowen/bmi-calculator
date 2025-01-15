@@ -157,15 +157,15 @@ main {
     #bmi-form-section {
         margin: 0px;
         padding: 8%;
-        height: 100%;
+        min-height: 90vh;
         width: 100%;
         font-size: small;
-        padding-top: 50px
+
     }
 
     #bmi-results-section {
         background-color: #fff;
-        height: 100%;
+        height: 100vh;
         width: 100%;
         margin: 0px;
         border-radius: 0px;
@@ -175,9 +175,10 @@ main {
 
 @media screen and (min-width: 768px) {
     main {
-        width: 100vw;
+        width: 90vw;
         margin: auto;
     }
+
     #bmi-form-section {
         width: 40%;
         color: #4e5357;
@@ -185,6 +186,11 @@ main {
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
+ 
+    }
+
+    #bmi-results-section{
+        max-height: 850px;
     }
 }
 
@@ -202,6 +208,13 @@ main {
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
+        
+    }
+
+    #bmi-results-section {
+        width: 40%;
+        min-width: 38vw;
+ 
     }
 
     
