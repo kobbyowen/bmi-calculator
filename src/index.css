@@ -31,7 +31,7 @@ main {
 
 #bmi-form-section {
     width: 50%;
-    color: #4e5357;
+    color: #171614;
 }
 
 .bmi-page-logo {
@@ -41,8 +41,66 @@ main {
     font-size: 15px;
 }
 
+#bmi-form-section {
+    display: flex;
+    flex-direction: column;
+}
+
 .active-gender {
     border: 2px solid #000;
+}
+
+.bmi-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bmi-calculator-description {
+    color: #4e5357;
+}
+
+.bmi-label {}
+
+.bmi-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 60%;
+}
+
+.bmi-gender-option {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #00000065;
+    background-color: #fff;
+    width: 38%;
+    margin-right: 10px;
+}
+
+.bmi-input {
+    width: 65%;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #00000065;
+
+}
+
+#age {
+    width: 80%;
+}
+
+.bmi-select {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+button {
+    width: 80%;
+    padding: 15px;
+    background-color: #fe6f61;
+    border: none;
+    border-radius: 5px;
 }
 
 
