@@ -70,13 +70,18 @@ main {
     /* width: 60%; */
 }
 
+.bmi-gender-options {
+    display: flex;
+
+}
+
 .bmi-gender-option {
     /* padding: 10px 5px; */
     border-radius: 5px;
     border: 1px solid #00000065;
     background-color: #fff;
-    width: 175px;
-    margin-right: 10px;
+    width: 177px;
+    /* margin-right: 10px; */
 }
 
 .bmi-input {
