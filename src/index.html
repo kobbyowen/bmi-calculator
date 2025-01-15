@@ -13,7 +13,7 @@
 		<title>BMI Calculator</title>
 	</head>
 	<body>
-    <div class="bmi-page-logo">Fitness & Health</div>
+    <div class="bmi-page-logo">Fitness & health</div>
 		<main id="main">
 			<div id="bmi-form-section">
 				<div class="bmi-form-heading">
@@ -67,7 +67,15 @@
 					</div>
 				</form>
 			</div>
-			<div id="bmi-results-section"></div>
+			<div id="bmi-results-section">
+				<div class="bmi-results-section-header">
+					<h2 class="bmi-results-title"> Your results </h2>
+					<p class="bmi-results-description">A BMI between 18.5 and 24.9 is considered normal weight, reducing the risk of weight-related health issues.</p>
+				</div>
+				<div id="bmi-chart">
+					<canvas id="canvas" width=325 height=325></canvas>
+				</div>
+			</div>
 		</main>
 		<script type="application/javascript" src="index.js"></script>
 	</body>
