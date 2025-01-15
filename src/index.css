@@ -19,6 +19,7 @@ main {
     display: flex;
     height: 92vh;
     gap: 20px;
+    justify-content: space-between;
 }
 
 #bmi-results-section {
@@ -32,6 +33,10 @@ main {
 #bmi-form-section {
     width: 50%;
     color: #4e5357;
+    display :flex;
+    flex-flow: column;
+    gap: 20px;
+    font-size: 16px;
 }
 
 .bmi-page-logo {
@@ -45,8 +50,100 @@ main {
     border: 2px solid #000;
 }
 
+#bmi-form-section > form.bmi-form {
+    display: flex;
+    gap: 30px;
+    flex-flow: column;
+}
 
-@media screen and (max-width: 600px) {
+.bmi-form-field {
+    width: 100% ;
+}
+
+.bmi-label{
+    font-weight: bold;
+    padding: 5px 0px ;
+}
+
+
+#age {
+    width: 100%;
+}
+
+.bmi-form-field>div {
+    display: flex;
+    gap: 10px ;
+}
+
+.bmi-input,
+.bmi-select,
+.bmi-gender-options>button,
+.bmi-form-field>input[type='submit']{
+    width: 100% ;
+    border: 1px solid #ddd ;
+    padding: 18px ;
+    border-radius: 10px ;
+    font-size: large;
+    color: #555
+
+}
+
+.bmi-select {
+    width: 25%;
+    min-width: 100px;
+    background: white url(../assets/images/caret-down.png) no-repeat scroll calc(100% - 20px) center/8px auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+.bmi-input:active,
+.bmi-input:focus{
+    border: 1px solid #ddd ;
+}
+
+.bmi-gender-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px ;
+   
+}
+
+.bmi-gender-options>button{
+    width: 48%;
+    background-color: white;
+    cursor: pointer;
+    color: black ;
+}
+
+.bmi-gender-options>button:hover{
+    background-color: #eee
+}
+
+.bmi-gender-options>button.active-gender{
+    border: 2px solid black ;
+}
+
+.bmi-form-field>button[type='submit'] {
+    background-color: #fe6f61 ;
+    color: white ;
+    width: 100% ;
+    border : none ;
+    border-radius: 15px ;
+    padding: 20px ;
+    margin-top: 20px ;
+    cursor: pointer;
+    font-size: large;
+}
+
+.bmi-calculator-description {
+    font-weight: 100;
+    font-size: large;
+}
+
+@media screen and (max-width: 768px) {
     main {
         display: block;
         width: 100vw;
@@ -56,8 +153,11 @@ main {
 
     #bmi-form-section {
         margin: 0px;
-        padding: 10px;
+        padding: 8%;
         height: 100%;
+        width: 100%;
+        font-size: small;
+        padding-top: 50px
     }
 
     #bmi-results-section {
@@ -75,11 +175,32 @@ main {
         width: 100vw;
         margin: auto;
     }
+    #bmi-form-section {
+        width: 40%;
+        color: #4e5357;
+        display :flex;
+        flex-flow: column;
+        gap: 20px;
+        font-size: 18px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
     main {
         width: 85vw;
         margin: auto;
+        justify-content: space-between;
     }
+
+    #bmi-form-section {
+        width: 35%;
+        color: #4e5357;
+        display :flex;
+        flex-flow: column;
+        gap: 20px;
+        font-size: 18px;
+    }
+
+    
+    
 }
