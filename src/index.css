@@ -97,6 +97,9 @@ main {
     appearance: none;
 }
 
+.bmi-input-error {
+    border: 1px solid tomato ;
+}
 
 .bmi-input:active,
 .bmi-input:focus{
