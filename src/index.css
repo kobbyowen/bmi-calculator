@@ -90,7 +90,13 @@ main {
 
 .bmi-select {
     width: 25%;
+    min-width: 100px;
+    background: white url(../assets/images/caret-down.png) no-repeat scroll calc(100% - 20px) center/8px auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
+
 
 .bmi-input:active,
 .bmi-input:focus{
@@ -147,7 +153,7 @@ main {
 
     #bmi-form-section {
         margin: 0px;
-        padding: 10px;
+        padding: 8%;
         height: 100%;
         width: 100%;
         font-size: small;
@@ -171,7 +177,6 @@ main {
     }
     #bmi-form-section {
         width: 40%;
-        margin: 0 auto ;
         color: #4e5357;
         display :flex;
         flex-flow: column;
@@ -184,16 +189,18 @@ main {
     main {
         width: 85vw;
         margin: auto;
+        justify-content: space-between;
     }
 
     #bmi-form-section {
         width: 35%;
-        margin: 0 auto ;
         color: #4e5357;
         display :flex;
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
     }
+
+    
     
 }
