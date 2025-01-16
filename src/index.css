@@ -152,6 +152,8 @@ main {
 
 .bmi-results-section-header {
     padding: 20px;
+    color: #4e5357;
+
 }
 
 #bmi-chart {
@@ -160,6 +162,8 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+
 
 @media screen and (max-width: 768px) {
     main {
@@ -184,6 +188,11 @@ main {
         width: 100%;
         margin: 0px;
         border-radius: 0px;
+
+    }
+
+    #canvas {
+        width: 80vw;
     }
 
 
@@ -205,6 +214,8 @@ main {
         font-size: 18px;
 
     }
+
+
 
     #bmi-results-section {
         max-height: 850px;
