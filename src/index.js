@@ -8,13 +8,21 @@ const weight = document.getElementById("weight");
 const age = document.getElementById("age");
 const heightUnit = document.getElementById("height-unit");
 const weightUnit = document.getElementById("weight-unit");
-let bmiValues = {};
 const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-const values = [30, 55, 35, 40];
-const colors = ["#45a09f", "#f0a710", "#ea6170", "#8292f1"];
 
-const labels = ["Voluntary", "Robot", "Mandatory"];
+maleButton.addEventListener("click", (e) => {
+  e.target.classList.add("active-gender");
+  femaleButton.classList.remove("active-gender");
+});
+
+femaleButton.addEventListener("click", (e) => {
+  e.target.classList.add("active-gender");
+  maleButton.classList.remove("active-gender");
+});
+
+document.addEventListener("readystatechange", () => {
+  drawBMICanvas(canvas, "N/A");
+});
 
 function getGenderValue() {
   if (femaleButton.classList.contains("active-gender")) {
@@ -26,15 +34,27 @@ function getGenderValue() {
   return "";
 }
 
-maleButton.addEventListener("click", (e) => {
-  e.target.classList.add("active-gender");
-  femaleButton.classList.remove("active-gender");
-});
+function getBmiValues(data) {
+  const height = data.heightUnit === "cm" ? data.height / 10 : data.height;
+  const weight = data.weightUnit === "Ib" ? data.weight / 2.20462 : data.weight;
 
-femaleButton.addEventListener("click", (e) => {
-  e.target.classList.add("active-gender");
-  maleButton.classList.remove("active-gender");
-});
+  const bmi = (weight / height ** 2).toFixed(2);
+  const bmiPrime = (bmi / 25).toFixed(2);
+  const pondoralIndex = (weight / height ** 3).toFixed(2);
+
+  return {
+    bmi,
+    bmiPrime,
+    pondoralIndex,
+  };
+}
+
+function presentBMIInfo(formData) {
+  const canvas = document.getElementById("canvas");
+  const bmiValues = getBmiValues(formData);
+
+  drawBMICanvas(canvas, bmiValues.bmi, formData);
+}
 
 calculateButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -66,87 +86,89 @@ calculateButton.addEventListener("click", (e) => {
     weight: parseFloat(weightValue),
     weightUnit: weightUnitValue,
   };
-  console.log(formData);
 
-  const accessBmiValues = getBmiValues(formData);
-
-  dmbChart(400, 230, 165, 50, values, colors, labels, 0, accessBmiValues);
+  presentBMIInfo(formData);
 });
 
-function getBmiValues(data) {
-  let height = 0;
-  if (data.heightUnit === "cm") {
-    height = data.height / 100;
-  } else {
-    height = data.height;
-  }
-  let weight = 0;
-  if (data.weightUnit === "Ib") {
-    weight = data.weight / 2.20462;
-  } else {
-    weight = data.weight;
-  }
+function drawBMICanvas(canvas, bmiValue) {
+  const arcWidth = 50;
+  const radius = 0.5 * canvas.width - arcWidth;
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const context = canvas.getContext("2d");
 
-  const bmi = (weight / height ** 2).toFixed(2);
-  const bmiPrime = (bmi / 25).toFixed(2);
-  const pondoralIndex = (weight / height ** 3).toFixed(2);
+  const segments = [
+    {
+      value: 30,
+      color: "#45a09f",
+    },
+    {
+      value: 55,
+      color: "#f0a710",
+    },
+    {
+      value: 35,
+      color: "#ea6170",
+    },
+    {
+      value: 40,
+      color: "#8292f1",
+    },
+  ];
 
-  return {
-    bmi,
-    bmiPrime,
-    pondoralIndex,
-  };
+  const PI = Math.PI;
+  const offset = -PI / 2.5;
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  drawArcSegments(
+    context,
+    segments,
+    centerX,
+    centerY,
+    radius,
+    arcWidth,
+    offset
+  );
+
+  drawBMIText(context, bmiValue, centerX, centerY);
 }
 
-dmbChart(400, 230, 165, 50, values, colors, labels, 0, { bmi: "N/A" });
-
-function dmbChart(
-  cx,
-  cy,
+function drawArcSegments(
+  context,
+  segments,
+  centerX,
+  centerY,
   radius,
-  arcwidth,
-  values,
-  colors,
-  labels,
-  selectedValue,
-  accessBmiValues
+  arcWidth,
+  offset
 ) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  let tot = 0;
-  let accum = 0;
-  const PI = Math.PI;
-  const PI2 = PI * 2;
-  const offset = -PI / 2.5;
-  ctx.lineWidth = arcwidth;
-  for (let i = 0; i < values.length; i++) {
-    tot += values[i];
-  }
-  for (let i = 0; i < values.length; i++) {
-    ctx.beginPath();
-    ctx.arc(
-      cx,
-      cy,
-      radius,
-      offset + PI2 * (accum / tot),
-      offset + PI2 * ((accum + values[i]) / tot)
-    );
-    ctx.strokeStyle = colors[i];
-    ctx.stroke();
-    accum += values[i];
-  }
-  const innerRadius = 0;
-  ctx.beginPath();
-  ctx.arc(cx, cy, innerRadius, 0, PI2);
-  ctx.fillStyle = "white";
-  ctx.fill();
-  ctx.textAlign = "center";
-  ctx.textBaseline = "bottom";
-  ctx.fillStyle = "black";
+  const totalValue = segments.reduce(
+    (total, segment) => total + segment.value,
+    0
+  );
+  let accumulatedValue = 0;
 
-  ctx.font = 35 + "px verdana";
-  if (accessBmiValues.bmi === "N/A") {
-    ctx.fillText(`BMI= ${"N/A"}`, cx, cy - innerRadius * 0.25);
-  } else {
-    ctx.fillText(`BMI= ${accessBmiValues.bmi}`, cx, cy - innerRadius * 0.25);
-  }
+  context.lineWidth = arcWidth;
+
+  segments.forEach((segment) => {
+    const startAngle = offset + (accumulatedValue / totalValue) * Math.PI * 2;
+    const endAngle =
+      offset + ((accumulatedValue + segment.value) / totalValue) * Math.PI * 2;
+
+    context.beginPath();
+    context.arc(centerX, centerY, radius, startAngle, endAngle);
+    context.strokeStyle = segment.color;
+    context.stroke();
+
+    accumulatedValue += segment.value;
+  });
+}
+
+function drawBMIText(context, bmiValue, centerX, centerY) {
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.fillStyle = "black";
+  context.font = "30px Host Grotesk";
+  context.fillText(`BMI = ${bmiValue}`, centerX, centerY);
 }
