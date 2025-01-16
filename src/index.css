@@ -154,7 +154,7 @@ main {
     padding: 20px;
 }
 
-.bmi-chart {
+#bmi-chart {
     display: flex;
     flex-direction: column;
     justify-content: center;
