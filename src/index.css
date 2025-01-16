@@ -33,7 +33,7 @@ main {
 #bmi-form-section {
     width: 50%;
     color: #4e5357;
-    display :flex;
+    display: flex;
     flex-flow: column;
     gap: 20px;
     font-size: 16px;
@@ -50,19 +50,19 @@ main {
     border: 2px solid #000;
 }
 
-#bmi-form-section > form.bmi-form {
+#bmi-form-section>form.bmi-form {
     display: flex;
     gap: 30px;
     flex-flow: column;
 }
 
 .bmi-form-field {
-    width: 100% ;
+    width: 100%;
 }
 
-.bmi-label{
+.bmi-label {
     font-weight: bold;
-    padding: 5px 0px ;
+    padding: 5px 0px;
 }
 
 
@@ -72,20 +72,19 @@ main {
 
 .bmi-form-field>div {
     display: flex;
-    gap: 10px ;
+    gap: 10px;
 }
 
 .bmi-input,
 .bmi-select,
 .bmi-gender-options>button,
-.bmi-form-field>input[type='submit']{
-    width: 100% ;
-    border: 1px solid #ddd ;
-    padding: 18px ;
-    border-radius: 10px ;
+.bmi-form-field>input[type='submit'] {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 18px;
+    border-radius: 10px;
     font-size: large;
     color: #555
-
 }
 
 .bmi-select {
@@ -98,45 +97,45 @@ main {
 }
 
 .bmi-input-error {
-    border: 1px solid tomato ;
+    border: 1px solid tomato;
 }
 
 .bmi-input:active,
-.bmi-input:focus{
-    border: 1px solid #ddd ;
+.bmi-input:focus {
+    border: 1px solid #ddd;
 }
 
 .bmi-gender-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px ;
-   
+    gap: 30px;
+
 }
 
-.bmi-gender-options>button{
+.bmi-gender-options>button {
     width: 48%;
     background-color: white;
     cursor: pointer;
-    color: black ;
+    color: black;
 }
 
-.bmi-gender-options>button:hover{
+.bmi-gender-options>button:hover {
     background-color: #eee
 }
 
-.bmi-gender-options>button.active-gender{
-    border: 2px solid black ;
+.bmi-gender-options>button.active-gender {
+    border: 2px solid black;
 }
 
 .bmi-form-field>button[type='submit'] {
-    background-color: #fe6f61 ;
-    color: white ;
-    width: 100% ;
-    border : none ;
-    border-radius: 15px ;
-    padding: 20px ;
-    margin-top: 20px ;
+    background-color: #fe6f61;
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
     cursor: pointer;
     font-size: large;
 }
@@ -144,6 +143,22 @@ main {
 .bmi-calculator-description {
     font-weight: 100;
     font-size: large;
+}
+
+.bmi-results-title {
+    padding: 10px;
+    border-bottom: 2px solid #0000001a;
+}
+
+.bmi-results-section-header {
+    padding: 20px;
+}
+
+.bmi-chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -170,6 +185,8 @@ main {
         margin: 0px;
         border-radius: 0px;
     }
+
+
 }
 
 
@@ -182,14 +199,14 @@ main {
     #bmi-form-section {
         width: 40%;
         color: #4e5357;
-        display :flex;
+        display: flex;
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
- 
+
     }
 
-    #bmi-results-section{
+    #bmi-results-section {
         max-height: 850px;
     }
 }
@@ -204,19 +221,19 @@ main {
     #bmi-form-section {
         width: 35%;
         color: #4e5357;
-        display :flex;
+        display: flex;
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
-        
+
     }
 
     #bmi-results-section {
         width: 40%;
         min-width: 38vw;
- 
+
     }
 
-    
-    
+
+
 }
