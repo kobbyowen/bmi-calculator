@@ -153,7 +153,14 @@ main {
 .bmi-results-section-header {
     padding: 20px;
     color: #4e5357;
+    font-weight: 100;
+    font-size: large;
 
+}
+
+#canvas {
+    height: 360px;
+    width: 360px;
 }
 
 #bmi-chart {
