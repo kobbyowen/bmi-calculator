@@ -35,17 +35,27 @@ function getGenderValue() {
 }
 
 function getBmiValues(data) {
-  const height = data.heightUnit === "cm" ? data.height / 10 : data.height;
+  let height = data.height;
+  if (data.heightUnit === "cm") {
+    height = data.height / 100;
+  } else if (data.heightUnit === "in") {
+    height = data.height * 0.0254;
+  }
+
   const weight = data.weightUnit === "Ib" ? data.weight / 2.20462 : data.weight;
 
   const bmi = (weight / height ** 2).toFixed(2);
   const bmiPrime = (bmi / 25).toFixed(2);
-  const pondoralIndex = (weight / height ** 3).toFixed(2);
+  const ponderalIndex = (weight / height ** 3).toFixed(2);
+  const minimumHealthyWeight = (18.5 * height ** 2).toFixed(2);
+  const maximumHealthyWeight = (25 * height ** 2).toFixed(2);
 
   return {
     bmi,
     bmiPrime,
-    pondoralIndex,
+    ponderalIndex,
+    minimumHealthyWeight,
+    maximumHealthyWeight,
   };
 }
 
@@ -91,7 +101,7 @@ calculateButton.addEventListener("click", (e) => {
 });
 
 function drawBMICanvas(canvas, bmiValue) {
-  const arcWidth = 50;
+  const arcWidth = 35;
   const radius = 0.5 * canvas.width - arcWidth;
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
