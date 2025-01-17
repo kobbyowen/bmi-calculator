@@ -51,8 +51,8 @@ function getBmiValues(data) {
   const bmi = (weight / height ** 2).toFixed(2);
   const bmiPrime = (bmi / 25).toFixed(2);
   const ponderalIndex = (weight / height ** 3).toFixed(2);
-  const minimumHealthyWeight = (18.5 ** 2).toFixed(2);
-  const maximumHealthyWeight = (25 ** 2).toFixed(2);
+  const minimumHealthyWeight = (18.5 * height ** 2).toFixed(2);
+  const maximumHealthyWeight = (25 * height ** 2).toFixed(2);
 
   return {
     bmi,
