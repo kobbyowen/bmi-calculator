@@ -9,6 +9,11 @@ const age = document.getElementById("age");
 const heightUnit = document.getElementById("height-unit");
 const weightUnit = document.getElementById("weight-unit");
 const canvas = document.getElementById("canvas");
+const bmiPrime = document.getElementById("bmi-prime");
+const ponderalIndex = document.getElementById("ponderal-index");
+const healthyWeightForHeight = document.getElementById(
+  "healthy-weight-for-height"
+);
 
 maleButton.addEventListener("click", (e) => {
   e.target.classList.add("active-gender");
@@ -64,6 +69,10 @@ function presentBMIInfo(formData) {
   const bmiValues = getBmiValues(formData);
 
   drawBMICanvas(canvas, bmiValues.bmi, formData);
+
+  bmiPrime.textContent = bmiValues.bmiPrime;
+  ponderalIndex.textContent = `${bmiValues.ponderalIndex}kg/m²`;
+  healthyWeightForHeight.textContent = `${bmiValues.minimumHealthyWeight}kg - ${bmiValues.maximumHealthyWeight}kg`;
 }
 
 calculateButton.addEventListener("click", (e) => {
