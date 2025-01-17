@@ -200,6 +200,12 @@ main {
     font-weight: bold;
 }
 
+#healthy-weight-for-height,
+#bmi-prime,
+#ponderal-index {
+    font-weight: normal;
+}
+
 
 .bmi-annotation:nth-of-type(1) .annotation-dot {
     border-color: #45a09f;
@@ -218,7 +224,7 @@ main {
 }
 
 .bmi-results-list {
-    padding-left: 2vw;
+    padding-left: 30px;
 }
 
 .bmi-result {
