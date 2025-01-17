@@ -35,17 +35,13 @@ function getGenderValue() {
 }
 
 function getBmiValues(data) {
-  let height = 0;
+  let height = data.height;
   if (data.heightUnit === "cm") {
     height = data.height / 100;
-  } else {
-    height = data.height;
-  }
-  if (data.heightUnit === "in") {
+  } else if (data.heightUnit === "in") {
     height = data.height * 0.0254;
-  } else {
-    height = data.height;
   }
+
   const weight = data.weightUnit === "Ib" ? data.weight / 2.20462 : data.weight;
 
   const bmi = (weight / height ** 2).toFixed(2);
