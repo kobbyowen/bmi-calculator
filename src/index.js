@@ -21,7 +21,7 @@ femaleButton.addEventListener("click", (e) => {
 });
 
 document.addEventListener("readystatechange", () => {
-  drawBMICanvas(canvas, "N/A");
+  drawBMICanvas(canvas, 30.5);
 });
 
 function getGenderValue() {
@@ -40,46 +40,28 @@ function findCoordinatesOnCircle(centerX, centerY, radius, angle) {
   return { x, y };
 }
 
-function getArrowCoordinates(
-  startAngle,
-  endAngle,
-  centerX,
-  centerY,
-  radius,
-  bmiClassification
-) {
-  let angle = 0;
-  if (bmiClassification === "normal") {
+function getArrowCoordinates(angle, centerX, centerY, radius) {
+  const modifiedAngle = angle + 90;
+
+  if (modifiedAngle >= 0 && modifiedAngle <= 180) {
     return {
-      ...findCoordinatesOnCircle(centerX, centerY, radius, startAngle + 10),
-      firstAngle: 120,
-      firstShaftLength: 30,
-      secondAngleOffset: 60,
-      secondShaftLength: 100,
+      ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
+      firstAngle: 180,
+      firstShaftLength: 0,
+      secondAngleOffset: 0,
+      secondShaftLength: 300,
       text: "normal weight",
     };
   }
-  if (bmiClassification === "underweight") {
+
+  if (modifiedAngle >= 181 && modifiedAngle <= 360) {
     return {
-      ...findCoordinatesOnCircle(centerX, centerY, radius, startAngle - 50),
-      firstAngle: 50,
-      firstShaftLength: 30,
-      secondAngleOffset: 310,
-      secondShaftLength: 100,
-      text: "underweight",
-    };
-  }
-  if (bmiClassification === "overweight") {
-    angle = endAngle - 10;
-  }
-  if (bmiClassification === "obese") {
-    return {
-      ...findCoordinatesOnCircle(centerX, centerY, radius, startAngle - 80),
-      firstAngle: 300,
-      firstShaftLength: 30,
-      secondAngleOffset: 30,
-      secondShaftLength: 100,
-      text: "obese",
+      ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
+      firstAngle: 0,
+      firstShaftLength: 0,
+      secondAngleOffset: 0,
+      secondShaftLength: 300,
+      text: "normal weight",
     };
   }
 
@@ -96,11 +78,11 @@ function getBmiValues(data) {
 
   const weight = data.weightUnit === "Ib" ? data.weight / 2.20462 : data.weight;
 
-  const bmi = (weight / height ** 2).toFixed(2);
-  const bmiPrime = (bmi / 25).toFixed(2);
-  const ponderalIndex = (weight / height ** 3).toFixed(2);
-  const minimumHealthyWeight = (18.5 * height ** 2).toFixed(2);
-  const maximumHealthyWeight = (25 * height ** 2).toFixed(2);
+  const bmi = parseFloat((weight / height ** 2).toFixed(2));
+  const bmiPrime = parseFloat((bmi / 25).toFixed(2));
+  const ponderalIndex = parseFloat((weight / height ** 3).toFixed(2));
+  const minimumHealthyWeight = parseFloat((18.5 * height ** 2).toFixed(2));
+  const maximumHealthyWeight = parseFloat((25 * height ** 2).toFixed(2));
 
   return {
     bmi,
@@ -138,7 +120,7 @@ calculateButton.addEventListener("click", (e) => {
     (element) => element.value === ""
   );
 
-  // if (hasEmptyFields) return;
+  if (hasEmptyFields) return;
 
   const formData = {
     gender,
@@ -153,8 +135,11 @@ calculateButton.addEventListener("click", (e) => {
 });
 
 function drawBMICanvas(canvas, bmiValue) {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight + 20;
+
   const arcWidth = 30;
-  const radius = 0.5 * canvas.width - arcWidth;
+  const radius = Math.min(0.5 * canvas.width - arcWidth, 120);
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const context = canvas.getContext("2d");
@@ -202,20 +187,22 @@ function drawBMICanvas(canvas, bmiValue) {
 
   drawBMIText(context, bmiValue, centerX, centerY);
 
-  const bmiClassification = "obese";
+  if (typeof bmiValue !== "number") return;
 
-  const { startAngle, endAngle } =
-    segments.find((segment) => segment.label === bmiClassification) || {};
+  const bmiClassification = categorizeBMI(bmiValue);
+
+  const { startAngle, endAngle } = segments.find(
+    (segment) => segment.label === bmiClassification
+  );
+  const exactAngleForBMI =
+    getExactAngleForBMI(bmiValue, startAngle, endAngle) - 90;
   const arrowCoordinates = getArrowCoordinates(
-    startAngle,
-    endAngle,
+    exactAngleForBMI,
     centerX,
     centerY,
     radius,
     bmiClassification
   );
-
-  console.log({ bmiClassification, arrowCoordinates, startAngle, endAngle });
 
   drawArrow(
     context,
@@ -226,8 +213,39 @@ function drawBMICanvas(canvas, bmiValue) {
     arrowCoordinates.secondAngleOffset,
     arrowCoordinates.secondShaftLength,
     10,
-    arrowCoordinates.text
+    categorizeBMI(bmiValue)
   );
+}
+
+function getExactAngleForBMI(bmiValue, startAngle, endAngle) {
+  const bmiCategories = {
+    underweight: { min: 0, max: 18.4 },
+    normal: { min: 18.5, max: 24.9 },
+    overweight: { min: 25, max: 29.9 },
+    obese: { min: 30, max: 40 },
+  };
+
+  let category;
+  for (const [key, range] of Object.entries(bmiCategories)) {
+    if (bmiValue >= range.min && bmiValue <= range.max) {
+      category = range;
+      break;
+    }
+  }
+
+  // Handle BMI value outside defined ranges
+  if (!category) {
+    console.warn(
+      "BMI value is outside defined ranges. Returning closest angle."
+    );
+    return bmiValue < bmiCategories.underweight.min ? startAngle : endAngle;
+  }
+
+  // Calculate proportion and interpolate angle
+  const proportion = (bmiValue - category.min) / (category.max - category.min);
+  const exactAngle = startAngle + proportion * (endAngle - startAngle);
+
+  return exactAngle;
 }
 
 function drawArcSegments(
@@ -322,10 +340,10 @@ function drawArrow(
   ctx.save(); // Save the current context
   ctx.translate(midX, midY); // Move to the midpoint of the second shaft
 
-  ctx.textAlign = "center";
+  ctx.textAlign = "right";
   ctx.textBaseline = "middle";
   ctx.fillStyle = "black";
-  ctx.font = "12px Host Grotesk";
+  ctx.font = "16px Host Grotesk";
   ctx.fillText(text, 0, -10); // Draw the text slightly above the shaft
   ctx.restore(); // Restore the original context
 }

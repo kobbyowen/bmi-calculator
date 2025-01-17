@@ -159,8 +159,9 @@ main {
 }
 
 #canvas {
-    height: 360px;
-    width: 360px;
+    width: 100%;
+    padding:  0 20px 0 20px;
+
 }
 
 #bmi-chart {
@@ -202,10 +203,7 @@ main {
 
     }
 
-    #canvas {
-        width: 80vw;
-        height: 80vw;
-    }
+   
 
     .bmi-results-description {
         text-align: justify;
