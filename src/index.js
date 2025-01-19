@@ -53,8 +53,6 @@ function getArrowCoordinates(angle, centerX, centerY, radius) {
 
   if (modifiedAngle < 0) modifiedAngle = 360 + modifiedAngle;
 
-  console.log({ modifiedAngle });
-
   if (modifiedAngle >= 0 && modifiedAngle <= 40) {
     return {
       ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
