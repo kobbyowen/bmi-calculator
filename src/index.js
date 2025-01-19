@@ -15,6 +15,9 @@ const healthyWeightForHeight = document.getElementById(
   "healthy-weight-for-height"
 );
 
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight + 30;
+
 maleButton.addEventListener("click", (e) => {
   e.target.classList.add("active-gender");
   femaleButton.classList.remove("active-gender");
@@ -26,7 +29,7 @@ femaleButton.addEventListener("click", (e) => {
 });
 
 document.addEventListener("readystatechange", () => {
-  drawBMICanvas(canvas, 30.5);
+  drawBMICanvas(canvas, "N/A");
 });
 
 function getGenderValue() {
@@ -46,27 +49,67 @@ function findCoordinatesOnCircle(centerX, centerY, radius, angle) {
 }
 
 function getArrowCoordinates(angle, centerX, centerY, radius) {
-  const modifiedAngle = angle + 90;
+  let modifiedAngle = Math.round(angle + 90);
 
-  if (modifiedAngle >= 0 && modifiedAngle <= 180) {
+  if (modifiedAngle < 0) modifiedAngle = 360 + modifiedAngle;
+
+  console.log({ modifiedAngle });
+
+  if (modifiedAngle >= 0 && modifiedAngle <= 40) {
+    return {
+      ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
+      firstAngle: 120,
+      firstShaftLength: 40,
+      secondAngleOffset: 60,
+      secondShaftLength: 300,
+    };
+  }
+
+  if (modifiedAngle >= 41 && modifiedAngle <= 150) {
     return {
       ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
       firstAngle: 180,
       firstShaftLength: 0,
       secondAngleOffset: 0,
       secondShaftLength: 300,
-      text: "normal weight",
+    };
+  }
+  if (modifiedAngle >= 151 && modifiedAngle <= 180) {
+    return {
+      ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
+      firstAngle: 240,
+      firstShaftLength: 40,
+      secondAngleOffset: 300,
+      secondShaftLength: 300,
+    };
+  }
+  if (modifiedAngle >= 181 && modifiedAngle <= 210) {
+    return {
+      ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
+      firstAngle: 300,
+      firstShaftLength: 40,
+      secondAngleOffset: 60,
+      secondShaftLength: 250,
     };
   }
 
-  if (modifiedAngle >= 181 && modifiedAngle <= 360) {
+  if (modifiedAngle >= 211 && modifiedAngle <= 340) {
     return {
       ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
       firstAngle: 0,
       firstShaftLength: 0,
       secondAngleOffset: 0,
-      secondShaftLength: 300,
-      text: "normal weight",
+      secondShaftLength: 240,
+    };
+  }
+
+  if (modifiedAngle >= 341 && modifiedAngle <= 360) {
+    return {
+      ...findCoordinatesOnCircle(centerX, centerY, radius, angle),
+      firstAngle: 60,
+      firstShaftLength: 40,
+      secondAngleOffset: 300,
+      secondShaftLength: 200,
     };
   }
 
@@ -144,9 +187,6 @@ calculateButton.addEventListener("click", (e) => {
 });
 
 function drawBMICanvas(canvas, bmiValue) {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight + 20;
-
   const arcWidth = 30;
   const radius = Math.min(0.5 * canvas.width - arcWidth, 120);
   const centerX = canvas.width / 2;
@@ -222,7 +262,8 @@ function drawBMICanvas(canvas, bmiValue) {
     arrowCoordinates.secondAngleOffset,
     arrowCoordinates.secondShaftLength,
     10,
-    categorizeBMI(bmiValue)
+    categorizeBMI(bmiValue),
+    { centerX, centerY }
   );
 }
 
@@ -233,6 +274,14 @@ function getExactAngleForBMI(bmiValue, startAngle, endAngle) {
     overweight: { min: 25, max: 29.9 },
     obese: { min: 30, max: 40 },
   };
+
+  if (bmiValue > 40) {
+    bmiValue = 40;
+  }
+
+  if (bmiValue < 0) {
+    bmiValue = 0;
+  }
 
   let category;
   for (const [key, range] of Object.entries(bmiCategories)) {
@@ -288,7 +337,7 @@ function drawBMIText(context, bmiValue, centerX, centerY) {
 }
 
 function drawArrow(
-  ctx,
+  context,
   x,
   y,
   firstAngle,
@@ -296,65 +345,80 @@ function drawArrow(
   secondAngleOffset,
   secondShaftLength,
   arrowheadSize,
-  text
+  text,
+  { centerX, centerY }
 ) {
-  // Convert angles to radians
+  const canvasWidth = context.canvas.width;
+  const canvasHeight = context.canvas.height;
+
   const firstAngleRadians = (firstAngle * Math.PI) / 180;
   const secondAngleRadians =
     firstAngleRadians + (secondAngleOffset * Math.PI) / 180;
 
-  // Calculate the end of the first shaft
   const firstShaftEndX = x - firstShaftLength * Math.cos(firstAngleRadians);
   const firstShaftEndY = y - firstShaftLength * Math.sin(firstAngleRadians);
 
-  // Calculate the end of the second shaft
-  const secondShaftEndX =
+  let secondShaftEndX =
     firstShaftEndX - secondShaftLength * Math.cos(secondAngleRadians);
-  const secondShaftEndY =
+  let secondShaftEndY =
     firstShaftEndY - secondShaftLength * Math.sin(secondAngleRadians);
 
-  // Draw the first shaft
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  ctx.lineTo(firstShaftEndX, firstShaftEndY);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "black";
-  ctx.stroke();
+  if (secondShaftEndX < 0) {
+    secondShaftEndX = 0;
+  } else if (secondShaftEndX > canvasWidth) {
+    secondShaftEndX = canvasWidth;
+  }
 
-  // Draw the second shaft
-  ctx.beginPath();
-  ctx.moveTo(firstShaftEndX, firstShaftEndY);
-  ctx.lineTo(secondShaftEndX, secondShaftEndY);
-  ctx.stroke();
+  if (secondShaftEndY < 0) {
+    secondShaftEndY = 0;
+  } else if (secondShaftEndY > canvasHeight) {
+    secondShaftEndY = canvasHeight;
+  }
 
-  // Draw the arrowhead at the start of the first shaft
+  context.beginPath();
+  context.moveTo(x, y);
+  context.lineTo(firstShaftEndX, firstShaftEndY);
+  context.lineWidth = 1;
+  context.strokeStyle = "#333";
+  context.stroke();
+
+  context.beginPath();
+  context.moveTo(firstShaftEndX, firstShaftEndY);
+  context.lineTo(secondShaftEndX, secondShaftEndY);
+  context.stroke();
+
   const leftX = x - arrowheadSize * Math.cos(firstAngleRadians - Math.PI / 6);
   const leftY = y - arrowheadSize * Math.sin(firstAngleRadians - Math.PI / 6);
 
   const rightX = x - arrowheadSize * Math.cos(firstAngleRadians + Math.PI / 6);
   const rightY = y - arrowheadSize * Math.sin(firstAngleRadians + Math.PI / 6);
 
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  ctx.lineTo(leftX, leftY);
-  ctx.lineTo(rightX, rightY);
-  ctx.closePath();
-  ctx.fillStyle = "black";
-  ctx.fill();
+  context.beginPath();
+  context.moveTo(x, y);
+  context.lineTo(leftX, leftY);
+  context.lineTo(rightX, rightY);
+  context.closePath();
+  context.fillStyle = "#333";
+  context.fill();
 
-  // Write text on top of the second shaft
-  const midX = (firstShaftEndX + secondShaftEndX) / 2;
-  const midY = (firstShaftEndY + secondShaftEndY) / 2;
+  if (text === "normal") {
+    text = "normal weight";
+  }
+  const textWidth = context.measureText(text).width;
+  context.save();
 
-  ctx.save(); // Save the current context
-  ctx.translate(midX, midY); // Move to the midpoint of the second shaft
+  if (secondShaftEndX > centerX) {
+    context.translate(secondShaftEndX, secondShaftEndY);
+  } else {
+    context.translate(secondShaftEndX + textWidth / 1.5, secondShaftEndY);
+  }
 
-  ctx.textAlign = "right";
-  ctx.textBaseline = "middle";
-  ctx.fillStyle = "black";
-  ctx.font = "16px Host Grotesk";
-  ctx.fillText(text, 0, -10); // Draw the text slightly above the shaft
-  ctx.restore(); // Restore the original context
+  context.textAlign = "right";
+  context.textBaseline = "middle";
+  context.fillStyle = "#333";
+  context.font = "18px Host Grotesk";
+  context.fillText(text, 0, -12);
+  context.restore();
 }
 
 function categorizeBMI(bmi) {

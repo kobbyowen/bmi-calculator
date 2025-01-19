@@ -47,7 +47,7 @@ main {
 }
 
 .active-gender {
-    border: 2px solid #000;
+    border: 1px solid #000;
 }
 
 #bmi-form-section>form.bmi-form {
@@ -125,7 +125,7 @@ main {
 }
 
 .bmi-gender-options>button.active-gender {
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 .bmi-form-field>button[type='submit'] {
@@ -179,7 +179,7 @@ main {
     display: flex;
     width: 100%;
     justify-content: space-around;
-    padding: 10px 0px 30px 0px;
+    padding: 0px 0px 30px 0px;
     flex-wrap: wrap;
 }
 
@@ -226,11 +226,13 @@ main {
 
 .bmi-results-list {
     padding-left: 30px;
+
 }
 
 .bmi-result {
-    padding: 5px;
+    padding: 8px;
     padding-top: 0px;
+    font-size: 16px;
 }
 
 
