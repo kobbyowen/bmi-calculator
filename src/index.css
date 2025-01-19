@@ -6,7 +6,7 @@
 
 body {
 
-    font-family: 'Host Grotesk', Arial, Helvetica, sans-serif;
+    font-family:  'Host Grotesk', Arial, Helvetica, sans-serif;
     background-color: #fff;
     margin: 0;
     padding: 0;
@@ -178,8 +178,8 @@ main {
 .bmi-interpretation-chart {
     display: flex;
     width: 100%;
-    justify-content: space-around;
-    padding: 0px 0px 30px 0px;
+    justify-content: space-between;
+    padding: 0px 20px 50px;
     flex-wrap: wrap;
 }
 
@@ -197,42 +197,41 @@ main {
 
 }
 
-.bmi-result-text {
-    font-weight: bold;
-}
-
-#healthy-weight-for-height,
-#bmi-prime,
-#ponderal-index {
-    font-weight: normal;
-}
-
-
 .bmi-annotation:nth-of-type(1) .annotation-dot {
-    border-color: #45a09f;
+    border-color: #8292f1 
 }
 
 .bmi-annotation:nth-of-type(2) .annotation-dot {
-    border-color: #f0a710;
+    border-color: #45a09f;
 }
 
 .bmi-annotation:nth-of-type(3) .annotation-dot {
-    border-color: #ea6170;
+    border-color: #f0a710 ;
 }
 
 .bmi-annotation:nth-of-type(4) .annotation-dot {
-    border-color: #8292f1;
+    border-color: #ea6170;
 }
 
 .bmi-results-list {
-    padding-left: 30px;
+    padding-left: 25px;
+    padding-bottom: 50px;
 
 }
 
 .bmi-result {
-    padding: 8px;
-    padding-top: 0px;
+    padding-top: 10px;
     font-size: 16px;
+    display: flex;
+    gap: 10px;
+}
+
+.bmi-result-text {
+    font-weight: bold;
+}
+
+.bmi-result-figure{
+    font-weight: 100 ;
 }
 
 
@@ -256,21 +255,15 @@ main {
 
     #bmi-results-section {
         background-color: #fff;
-        height: 100vh;
+        height: calc(100vh + 100px);
         width: 100%;
         margin: 0px;
         border-radius: 0px;
 
     }
 
-   
-
     .bmi-results-description {
         text-align: justify;
-    }
-
-    .bmi-results-list {
-        padding-left: 6.5vw;
     }
 
 }
@@ -289,17 +282,16 @@ main {
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
-
     }
-
-
 
     #bmi-results-section {
         max-height: 850px;
     }
+
 }
 
 @media screen and (min-width: 1200px) {
+
     main {
         width: 85vw;
         margin: auto;
@@ -313,15 +305,12 @@ main {
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
-
     }
 
     #bmi-results-section {
         width: 40%;
-        min-width: 38vw;
-
+        min-width: 38vw;  
     }
-
 
 
 }
