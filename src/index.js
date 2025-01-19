@@ -146,7 +146,7 @@ function presentBMIInfo(formData) {
   drawBMICanvas(canvas, bmiValues.bmi, formData);
 
   bmiPrime.textContent = bmiValues.bmiPrime;
-  ponderalIndex.textContent = `${bmiValues.ponderalIndex}kg/m²`;
+  ponderalIndex.textContent = `${bmiValues.ponderalIndex}kg/m³`;
   healthyWeightForHeight.textContent = `${bmiValues.minimumHealthyWeight}kg - ${bmiValues.maximumHealthyWeight}kg`;
 }
 

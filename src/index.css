@@ -90,7 +90,7 @@ main {
 .bmi-select {
     width: 25%;
     min-width: 100px;
-    background: white url(../assets/images/caret-down.png) no-repeat scroll calc(100% - 20px) center/8px auto;
+    background: white url(assets/images/caret-down.png) no-repeat scroll calc(100% - 20px) center/8px auto;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
