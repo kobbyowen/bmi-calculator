@@ -177,8 +177,8 @@ main {
 .bmi-interpretation-chart {
     display: flex;
     width: 100%;
-    justify-content: space-around;
-    padding: 10px 0px 30px 0px;
+    justify-content: space-between;
+    padding: 10px 32px;
     flex-wrap: wrap;
 }
 
@@ -206,21 +206,20 @@ main {
     font-weight: normal;
 }
 
-
 .bmi-annotation:nth-of-type(1) .annotation-dot {
-    border-color: #45a09f;
+    border-color: #8292f1;
 }
 
 .bmi-annotation:nth-of-type(2) .annotation-dot {
-    border-color: #f0a710;
+    border-color: #45a09f;
 }
 
 .bmi-annotation:nth-of-type(3) .annotation-dot {
-    border-color: #ea6170;
+    border-color: #f0a710;
 }
 
 .bmi-annotation:nth-of-type(4) .annotation-dot {
-    border-color: #8292f1;
+    border-color: #ea6170;
 }
 
 .bmi-results-list {
