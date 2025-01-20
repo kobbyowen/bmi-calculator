@@ -6,7 +6,7 @@
 
 body {
 
-    font-family: 'Host Grotesk', Arial, Helvetica, sans-serif;
+    font-family:  'Host Grotesk', Arial, Helvetica, sans-serif;
     background-color: #fff;
     margin: 0;
     padding: 0;
@@ -47,7 +47,7 @@ main {
 }
 
 .active-gender {
-    border: 2px solid #000;
+    border: 1px solid #000;
 }
 
 #bmi-form-section>form.bmi-form {
@@ -90,7 +90,7 @@ main {
 .bmi-select {
     width: 25%;
     min-width: 100px;
-    background: white url(../assets/images/caret-down.png) no-repeat scroll calc(100% - 20px) center/8px auto;
+    background: white url(assets/images/caret-down.png) no-repeat scroll calc(100% - 20px) center/8px auto;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -125,7 +125,7 @@ main {
 }
 
 .bmi-gender-options>button.active-gender {
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 .bmi-form-field>button[type='submit'] {
@@ -159,8 +159,9 @@ main {
 }
 
 #canvas {
-    height: 360px;
-    width: 360px;
+    width: 100%;
+    padding:  0 20px 0 20px;
+
 }
 
 #bmi-chart {
@@ -178,7 +179,7 @@ main {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding: 10px 32px;
+    padding: 0px 20px 50px;
     flex-wrap: wrap;
 }
 
@@ -200,14 +201,9 @@ main {
     font-weight: bold;
 }
 
-#healthy-weight-for-height,
-#bmi-prime,
-#ponderal-index {
-    font-weight: normal;
-}
-
 .bmi-annotation:nth-of-type(1) .annotation-dot {
     border-color: #8292f1;
+
 }
 
 .bmi-annotation:nth-of-type(2) .annotation-dot {
@@ -215,7 +211,7 @@ main {
 }
 
 .bmi-annotation:nth-of-type(3) .annotation-dot {
-    border-color: #f0a710;
+    border-color: #f0a710 ;
 }
 
 .bmi-annotation:nth-of-type(4) .annotation-dot {
@@ -223,12 +219,24 @@ main {
 }
 
 .bmi-results-list {
-    padding-left: 30px;
+    padding-left: 25px;
+    padding-bottom: 50px;
+
 }
 
 .bmi-result {
-    padding: 5px;
-    padding-top: 0px;
+    padding-top: 10px;
+    font-size: 16px;
+    display: flex;
+    gap: 10px;
+}
+
+.bmi-result-text {
+    font-weight: bold;
+}
+
+.bmi-result-figure{
+    font-weight: 100 ;
 }
 
 
@@ -252,24 +260,15 @@ main {
 
     #bmi-results-section {
         background-color: #fff;
-        height: 100vh;
+        height: calc(100vh + 100px);
         width: 100%;
         margin: 0px;
         border-radius: 0px;
 
     }
 
-    /* #canvas {
-        width: 80vw;
-        height: 80vw;
-    } */
-
     .bmi-results-description {
         text-align: justify;
-    }
-
-    .bmi-results-list {
-        padding-left: 6.5vw;
     }
 
 }
@@ -288,17 +287,16 @@ main {
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
-
     }
-
-
 
     #bmi-results-section {
         max-height: 850px;
     }
+
 }
 
 @media screen and (min-width: 1200px) {
+
     main {
         width: 85vw;
         margin: auto;
@@ -312,15 +310,12 @@ main {
         flex-flow: column;
         gap: 20px;
         font-size: 18px;
-
     }
 
     #bmi-results-section {
         width: 40%;
-        min-width: 38vw;
-
+        min-width: 38vw;  
     }
-
 
 
 }
