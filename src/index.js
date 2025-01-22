@@ -20,12 +20,14 @@ canvas.height = canvas.offsetHeight + 30;
 
 maleButton.addEventListener("click", (e) => {
   e.target.classList.add("active-gender");
-  femaleButton.classList.remove("active-gender");
+  e.target.classList.remove("bmi-input-error");
+  femaleButton.classList.remove("active-gender", "bmi-input-error");
 });
 
 femaleButton.addEventListener("click", (e) => {
   e.target.classList.add("active-gender");
-  maleButton.classList.remove("active-gender");
+  e.target.classList.remove("bmi-input-error");
+  maleButton.classList.remove("active-gender", "bmi-input-error");
 });
 
 document.addEventListener("readystatechange", () => {
@@ -160,6 +162,11 @@ calculateButton.addEventListener("click", (e) => {
   const weightUnitValue = weightUnit.value;
 
   const requiredElements = [age, height, weight];
+
+  if (!gender) {
+    maleButton.classList.add("bmi-input-error");
+    femaleButton.classList.add("bmi-input-error");
+  }
 
   requiredElements.forEach((element) =>
     element.value === ""
