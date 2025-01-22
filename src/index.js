@@ -14,18 +14,23 @@ const ponderalIndex = document.getElementById("ponderal-index");
 const healthyWeightForHeight = document.getElementById(
   "healthy-weight-for-height"
 );
+let isClicked = false;
 
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight + 30;
 
 maleButton.addEventListener("click", (e) => {
-  e.target.classList.add("active-gender");
+  isClicked = true;
+  e.target.style.border = "1px solid #000";
   femaleButton.classList.remove("active-gender");
+  femaleButton.style.border = "none";
 });
 
 femaleButton.addEventListener("click", (e) => {
-  e.target.classList.add("active-gender");
+  isClicked = true;
+  e.target.style.border = "1px solid #000";
   maleButton.classList.remove("active-gender");
+  maleButton.style.border = "none";
 });
 
 document.addEventListener("readystatechange", () => {
@@ -160,6 +165,11 @@ calculateButton.addEventListener("click", (e) => {
   const weightUnitValue = weightUnit.value;
 
   const requiredElements = [age, height, weight];
+
+  if (!isClicked) {
+    maleButton.style.border = "1px solid tomato";
+    femaleButton.style.border = "1px solid tomato";
+  }
 
   requiredElements.forEach((element) =>
     element.value === ""
