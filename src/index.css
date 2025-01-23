@@ -6,7 +6,7 @@
 
 body {
 
-    font-family:  'Host Grotesk', Arial, Helvetica, sans-serif;
+    font-family: 'Host Grotesk', Arial, Helvetica, sans-serif;
     background-color: #fff;
     margin: 0;
     padding: 0;
@@ -96,7 +96,7 @@ main {
     appearance: none;
 }
 
-.bmi-input-error {
+#form .bmi-input-error {
     border: 1px solid tomato;
 }
 
@@ -160,7 +160,7 @@ main {
 
 #canvas {
     width: 100%;
-    padding:  0 20px 0 20px;
+    padding: 0 20px 0 20px;
 
 }
 
@@ -211,7 +211,7 @@ main {
 }
 
 .bmi-annotation:nth-of-type(3) .annotation-dot {
-    border-color: #f0a710 ;
+    border-color: #f0a710;
 }
 
 .bmi-annotation:nth-of-type(4) .annotation-dot {
@@ -235,8 +235,8 @@ main {
     font-weight: bold;
 }
 
-.bmi-result-figure{
-    font-weight: 100 ;
+.bmi-result-figure {
+    font-weight: 100;
 }
 
 
@@ -314,7 +314,7 @@ main {
 
     #bmi-results-section {
         width: 40%;
-        min-width: 38vw;  
+        min-width: 38vw;
     }
 
 
