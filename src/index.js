@@ -169,12 +169,6 @@ calculateButton.addEventListener("click", (e) => {
     femaleButton.classList.add("bmi-input-error");
   }
 
-  elements.forEach((element) => {
-    if (element.value < 0) {
-      element.classList.add("bmi-input-error");
-    }
-  });
-
   requiredElements.forEach((element) =>
     element.value === ""
       ? element.classList.add("bmi-input-error")
