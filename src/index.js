@@ -117,7 +117,7 @@ function getArrowCoordinates(angle, centerX, centerY, radius) {
 }
 
 function getBmiValues(data) {
-  let height = data.height;
+  let height = data.height; // default in meters (m)
   if (data.heightUnit === "cm") {
     height = data.height / 100;
   } else if (data.heightUnit === "in") {
