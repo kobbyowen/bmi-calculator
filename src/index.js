@@ -161,23 +161,46 @@ calculateButton.addEventListener("click", (e) => {
   const heightUnitValue = heightUnit.value;
   const weightUnitValue = weightUnit.value;
 
-  const requiredElements = [age, height, weight];
+  const requiredElements = [
+    {
+      element: age,
+      min: 0,
+      max: 200,
+    },
+    {
+      element: height,
+      min: 0,
+      max: Infinity,
+    },
+    {
+      element: weight,
+      min: 0,
+      max: Infinity,
+    },
+  ];
+
+  requiredElements.forEach(({ element }) =>
+    element.classList.remove("bmi-input-error")
+  );
 
   if (!gender) {
     maleButton.classList.add("bmi-input-error");
     femaleButton.classList.add("bmi-input-error");
   }
 
-  requiredElements.forEach((element) =>
-    element.value === ""
-      ? element.classList.add("bmi-input-error")
-      : element.classList.remove("bmi-input-error")
-  );
-  const hasEmptyFields = requiredElements.some(
-    (element) => element.value === ""
+  const invalidElements = requiredElements.filter(
+    ({ element, min, max }) =>
+      element.value === "" ||
+      parseFloat(element.value) < min ||
+      parseFloat(element.value) > max
   );
 
-  if (hasEmptyFields) return;
+  if (invalidElements.length) {
+    invalidElements.forEach(({ element }) =>
+      element.classList.add("bmi-input-error")
+    );
+    return;
+  }
 
   const formData = {
     gender,
