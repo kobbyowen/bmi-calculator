@@ -186,6 +186,7 @@ calculateButton.addEventListener("click", (e) => {
   if (!gender) {
     maleButton.classList.add("bmi-input-error");
     femaleButton.classList.add("bmi-input-error");
+    return;
   }
 
   const invalidElements = requiredElements.filter(
