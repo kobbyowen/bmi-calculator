@@ -113,6 +113,21 @@ main {
 
 }
 
+
+
+#female
+#male{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px 
+}
+
+#female img
+#male img {
+    vertical-align: middle;
+}
+
 .bmi-gender-options>button {
     width: 48%;
     background-color: white;
