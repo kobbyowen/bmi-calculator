@@ -96,7 +96,7 @@ main {
     appearance: none;
 }
 
-#form .bmi-input-error {
+#bmi-form-section .bmi-input-error {
     border: 1px solid tomato;
 }
 
