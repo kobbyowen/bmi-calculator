@@ -192,7 +192,7 @@ calculateButton.addEventListener("click", (e) => {
   const invalidElements = requiredElements.filter(
     ({ element, min, max }) =>
       element.value === "" ||
-      parseFloat(element.value) < min ||
+      parseFloat(element.value) <= min ||
       parseFloat(element.value) > max
   );
 
