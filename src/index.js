@@ -213,6 +213,7 @@ calculateButton.addEventListener("click", (e) => {
   };
 
   presentBMIInfo(formData);
+  canvas.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 function drawBMICanvas(canvas, bmiValue) {
