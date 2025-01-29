@@ -96,6 +96,10 @@ main {
     appearance: none;
 }
 
+.second-input-height {
+    display: none;
+}
+
 #bmi-form-section .bmi-input-error {
     border: 1px solid tomato;
 }
@@ -115,16 +119,14 @@ main {
 
 
 
-#female
-#male{
+#female #male {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px 
+    gap: 5px
 }
 
-#female img
-#male img {
+#female img #male img {
     vertical-align: middle;
 }
 
