@@ -96,8 +96,13 @@ main {
     appearance: none;
 }
 
-.second-input-height {
+.bmi-hide{
     display: none;
+}
+
+.bmi-show {
+    display: block;
+    
 }
 
 #bmi-form-section .bmi-input-error {
