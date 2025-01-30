@@ -95,6 +95,7 @@
     <link rel="stylesheet" href="index.css" />
     <title>BMI Calculator</title>
   </head>
+
   <body>
     <div class="bmi-page-logo">Fitness & health</div>
     <main id="main">
@@ -104,7 +105,6 @@
           <p class="bmi-calculator-description">
             Enter the values and click the calculate button to get results.
           </p>
-          <p class="bmi-required-fields-text">All fields are required</p>
         </div>
         <form class="bmi-form">
           <div class="bmi-form-field">
@@ -156,10 +156,21 @@
                 required
                 min="0"
               />
+              <input
+                type="number"
+                class="bmi-input bmi-hide"
+                id="bmi-inches-height-input"
+                name="height"
+                step="0.01"
+                required
+                min="0"
+                placeholder="Inches"
+              />
               <select class="bmi-select" id="height-unit" name="height-unit">
                 <option value="cm">cm</option>
-                <option value="in">in</option>
+                <option value="ft">ft</option>
                 <option value="m">m</option>
+                <option value="in">in</option>
               </select>
             </div>
           </div>

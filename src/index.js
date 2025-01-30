@@ -18,6 +18,21 @@ const healthyWeightForHeight = document.getElementById(
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight + 30;
 
+heightUnit.addEventListener("change", (e) => {
+  console.log("ME", e.target.value);
+  const inchesElement = document.getElementById("bmi-inches-height-input");
+
+  if (e.target.value === "ft") {
+    height.setAttribute("placeholder", "Feet");
+    inchesElement.classList.remove("bmi-hide");
+    inchesElement.classList.add("bmi-show");
+  } else {
+    height.removeAttribute("placeholder");
+    inchesElement.classList.add("bmi-hide");
+    inchesElement.classList.remove("bmi-show");
+  }
+});
+
 maleButton.addEventListener("click", (e) => {
   e.target.classList.add("active-gender");
   e.target.classList.remove("bmi-input-error");
