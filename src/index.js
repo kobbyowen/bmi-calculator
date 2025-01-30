@@ -192,7 +192,7 @@ calculateButton.addEventListener("click", (e) => {
   const invalidElements = requiredElements.filter(
     ({ element, min, max }) =>
       element.value === "" ||
-      parseFloat(element.value) < min ||
+      parseFloat(element.value) <= min ||
       parseFloat(element.value) > max
   );
 
@@ -213,6 +213,7 @@ calculateButton.addEventListener("click", (e) => {
   };
 
   presentBMIInfo(formData);
+  canvas.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 function drawBMICanvas(canvas, bmiValue) {
