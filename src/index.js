@@ -19,7 +19,6 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight + 30;
 
 heightUnit.addEventListener("change", (e) => {
-  console.log("ME", e.target.value);
   const inchesElement = document.getElementById("bmi-inches-height-input");
 
   if (e.target.value === "ft") {
