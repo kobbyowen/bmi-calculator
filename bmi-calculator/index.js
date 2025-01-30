@@ -138,7 +138,7 @@ function getBmiValues(data) {
     height = data.height * 0.0254;
   }
 
-  const weight = data.weightUnit === "Ib" ? data.weight / 2.20462 : data.weight;
+  const weight = data.weightUnit === "lb" ? data.weight / 2.20462 : data.weight;
 
   const bmi = parseFloat((weight / height ** 2).toFixed(2));
   const bmiPrime = parseFloat((bmi / 25).toFixed(2));
