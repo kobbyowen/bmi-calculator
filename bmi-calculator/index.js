@@ -14,13 +14,12 @@ const ponderalIndex = document.getElementById("ponderal-index");
 const healthyWeightForHeight = document.getElementById(
   "healthy-weight-for-height"
 );
+const inchesElement = document.getElementById("bmi-inches-height-input");
 
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight + 30;
 
 heightUnit.addEventListener("change", (e) => {
-  const inchesElement = document.getElementById("bmi-inches-height-input");
-
   if (e.target.value === "ft") {
     height.setAttribute("placeholder", "Feet");
     inchesElement.classList.remove("bmi-hide");
@@ -136,6 +135,10 @@ function getBmiValues(data) {
     height = data.height / 100;
   } else if (data.heightUnit === "in") {
     height = data.height * 0.0254;
+  } else if (data.heightUnit === "ft") {
+    const feetToMeterValue = data.height * 0.3048;
+    const inchToMeterValue = data.heightInInches * 0.0254;
+    height = feetToMeterValue + inchToMeterValue;
   }
 
   const weight = data.weightUnit === "lb" ? data.weight / 2.20462 : data.weight;
@@ -174,6 +177,7 @@ calculateButton.addEventListener("click", (e) => {
   const ageValue = age.value;
   const heightUnitValue = heightUnit.value;
   const weightUnitValue = weightUnit.value;
+  const inchesValue = inchesElement.value;
 
   const requiredElements = [
     {
@@ -224,6 +228,7 @@ calculateButton.addEventListener("click", (e) => {
     heightUnit: heightUnitValue,
     weight: parseFloat(weightValue),
     weightUnit: weightUnitValue,
+    heightInInches: parseFloat(inchesValue),
   };
 
   presentBMIInfo(formData);
