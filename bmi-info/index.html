@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,6 +38,7 @@
     <link rel="stylesheet" href="index.css" />
     <title>BMI Calculator</title>
 </head>
+
 <body>
     <main id="bmi-main-content">
         <div id="bmi-content-container">
@@ -44,11 +46,18 @@
                 <div class="bmi-intro-content">
                     <h4 class="bmi-section-heading">What is BMI (Body Mass Index)?</h4>
                     <p class="bmi-section-subheading"> <span class="bmi-text-bold">1. Introduction to BMI</span> </p>
-                    <p class="bmi-section-text">BMI, or <span class="bmi-text-bold">Body Mass Index,</span> is a <span class="bmi-text-bold">numerical value</span> that helps determine whether a person has a healthy body weight in relation to their height. It is widely used by healthcare professionals and researchers to assess <span class="bmi-text-bold">weight categories</span> and possible health risks related to being underweight, normal weight, overweight, or obese.</p>
+                    <p class="bmi-section-text">BMI, or <span class="bmi-text-bold">Body Mass Index,</span> is a <span
+                            class="bmi-text-bold">numerical value</span> that helps determine whether a person has a
+                        healthy body weight in relation to their height. It is widely used by healthcare professionals
+                        and researchers to assess <span class="bmi-text-bold">weight categories</span> and possible
+                        health risks related to being underweight, normal weight, overweight, or obese.</p>
                 </div>
                 <div class="bmi-importance-content">
                     <h4 class="bmi-section-heading"> <span class="bmi-text-bold">2. Why is BMI Important?</span> </h4>
-                    <p class="bmi-section-text">BMI provides a <span class="bmi-text-bold">simple and quick way</span> to estimate whether a person is within a healthy weight range. Although it is not a perfect measurement, it helps <span class="bmi-text-bold">identify potential health risks</span> associated with body weight, such as:</p>
+                    <p class="bmi-section-text">BMI provides a <span class="bmi-text-bold">simple and quick way</span>
+                        to estimate whether a person is within a healthy weight range. Although it is not a perfect
+                        measurement, it helps <span class="bmi-text-bold">identify potential health risks</span>
+                        associated with body weight, such as:</p>
                     <ul class="bmi-health-risks-list">
                         <li>Heart disease</li>
                         <li>Diabetes</li>
@@ -56,7 +65,9 @@
                         <li>Joint problems</li>
                         <li>Metabolic disorders</li>
                     </ul>
-                    <p class="bmi-section-text">Because BMI only considers weight and height, it does <span class="bmi-text-bold">not measure body fat percentage,</span> but it still serves as a useful screening tool.</p>
+                    <p class="bmi-section-text">Because BMI only considers weight and height, it does <span
+                            class="bmi-text-bold">not measure body fat percentage,</span> but it still serves as a
+                        useful screening tool.</p>
                 </div>
             </div>
 
@@ -66,7 +77,7 @@
                     <p class="bmi-section-text">BMI is calculated using a simple mathematical formula:</p>
                     <p class="bmi-section-subheading"><span class="bmi-text-bold">Formula for BMI</span></p>
                     <p class="bmi-formula">
-                        BMI = 
+                        BMI =
                         <math>
                             <mfrac>
                                 <mn>Weight (kg)</mn>
@@ -74,9 +85,10 @@
                             </mfrac>
                         </math>
                     </p>
-                    <p class="bmi-section-text">Alternatively, if you are using <span class="bmi-text-bold">pounds and inches:</span></p>
+                    <p class="bmi-section-text">Alternatively, if you are using <span class="bmi-text-bold">pounds and
+                            inches:</span></p>
                     <p class="bmi-formula">
-                        BMI = 
+                        BMI =
                         <math>
                             <mfrac>
                                 <mn>Weight (lbs) × 703</mn>
@@ -88,10 +100,11 @@
 
                 <div class="bmi-example-section">
                     <p class="bmi-section-subheading"><span class="bmi-text-bold">Example Calculation</span></p>
-                    <p class="bmi-section-text">Suppose a person weighs <span class="bmi-text-bold">70 kg</span> and has a height of <span class="bmi-text-bold">1.75 meters</span>.</p>
+                    <p class="bmi-section-text">Suppose a person weighs <span class="bmi-text-bold">70 kg</span> and has
+                        a height of <span class="bmi-text-bold">1.75 meters</span>.</p>
                     <p class="bmi-section-text">Using the formula:</p>
                     <p class="bmi-formula">
-                        BMI = 
+                        BMI =
                         <math>
                             <mfrac>
                                 <mn>70</mn>
@@ -106,14 +119,16 @@
                             <mn>22.9</mn>
                         </math>
                     </p>
-                    <p class="bmi-section-text">So, this person's <span class="bmi-text-bold">BMI is 22.9,</span> which falls within the <span class="bmi-text-bold">"Normal weight"</span> range.</p>
+                    <p class="bmi-section-text">So, this person's <span class="bmi-text-bold">BMI is 22.9,</span> which
+                        falls within the <span class="bmi-text-bold">"Normal weight"</span> range.</p>
                 </div>
             </div>
 
             <div class="bmi-interpretation-section">
                 <h4 class="bmi-section-heading">Interpreting BMI Results</h4>
-                <p class="bmi-section-text">Once you calculate BMI, you can use the standard BMI classification chart:</p>
-                <table border="1px"   class="bmi-classification-table">
+                <p class="bmi-section-text">Once you calculate BMI, you can use the standard BMI classification chart:
+                </p>
+                <table border="1px" class="bmi-classification-table">
                     <tr>
                         <th>BMI Range</th>
                         <th>Category</th>
@@ -143,34 +158,46 @@
                         <td>Extreme Obesity (Class 3)</td>
                     </tr>
                 </table>
-                <p class="bmi-section-text">Underweight (<18.5): May indicate <span class="bmi-text-bold">malnutrition</span> or <span class="bmi-text-bold">underlying health conditions.</span></p>
-                <p class="bmi-section-text">Normal weight (18.5-24.9): Generally considered <span class="bmi-text-bold">healthy.</span></p>
-                <p class="bmi-section-text">Overweight (25-29.9): May increase the risk of <span class="bmi-text-bold">heart disease, diabetes, and high blood pressure.</span></p>
-                <p class="bmi-section-text">Obesity (30+): Increases the risk of <span class="bmi-text-bold">serious health conditions</span> such as stroke, high cholesterol, and arthritis.</p>
+                <p class="bmi-section-text">Underweight (<18.5): May indicate <span class="bmi-text-bold">
+                        malnutrition</span> or <span class="bmi-text-bold">underlying health conditions.</span></p>
+                <p class="bmi-section-text">Normal weight (18.5-24.9): Generally considered <span
+                        class="bmi-text-bold">healthy.</span></p>
+                <p class="bmi-section-text">Overweight (25-29.9): May increase the risk of <span
+                        class="bmi-text-bold">heart disease, diabetes, and high blood pressure.</span></p>
+                <p class="bmi-section-text">Obesity (30+): Increases the risk of <span class="bmi-text-bold">serious
+                        health conditions</span> such as stroke, high cholesterol, and arthritis.</p>
             </div>
 
             <div class="bmi-limitations-section">
                 <h4 class="bmi-section-heading">Limitations of BMI</h4>
-                <p class="bmi-section-text">While BMI is a useful <span class="bmi-text-bold">general indicator of health,</span> it has some limitations:</p>
+                <p class="bmi-section-text">While BMI is a useful <span class="bmi-text-bold">general indicator of
+                        health,</span> it has some limitations:</p>
                 <ol class="bmi-limitations-list">
                     <li><span class="bmi-text-bold">Does not Measure Body Fat Directly</span>
                         <ul>
-                            <li>BMI does not differentiate between <span class="bmi-text-bold">fat mass and muscle mass.</span></li>
-                            <li>A very muscular athlete may have a high BMI but <span class="bmi-text-bold">low body fat.</span></li>
+                            <li>BMI does not differentiate between <span class="bmi-text-bold">fat mass and muscle
+                                    mass.</span></li>
+                            <li>A very muscular athlete may have a high BMI but <span class="bmi-text-bold">low body
+                                    fat.</span></li>
                         </ul>
                     </li>
                     <li><span class="bmi-text-bold">Does Not Account for Age or Gender</span>
                         <ul>
-                            <li><span class="bmi-text-bold">Women naturally have more body fat</span> than men at the same BMI.</li>
-                            <li>Older adults may have <span class="bmi-text-bold">less muscle mass</span> but a normal BMI.</li>
+                            <li><span class="bmi-text-bold">Women naturally have more body fat</span> than men at the
+                                same BMI.</li>
+                            <li>Older adults may have <span class="bmi-text-bold">less muscle mass</span> but a normal
+                                BMI.</li>
                         </ul>
                     </li>
                     <li><span class="bmi-text-bold">Does Not Consider Fat Distribution</span>
                         <ul>
-                            <li>Two people with the same BMI may <span class="bmi-text-bold">store fat differently</span> (e.g., around the stomach vs. hips), which impacts health risks differently.</li>
+                            <li>Two people with the same BMI may <span class="bmi-text-bold">store fat
+                                    differently</span> (e.g., around the stomach vs. hips), which impacts health risks
+                                differently.</li>
                         </ul>
                     </li>
-                    <li>For a <span class="bmi-text-bold">more accurate assessment,</span> doctors may use additional measurements such as:
+                    <li>For a <span class="bmi-text-bold">more accurate assessment,</span> doctors may use additional
+                        measurements such as:
                         <ul>
                             <li>Waist-to-hip ratio (WHR)</li>
                             <li><span class="bmi-text-bold">Body fat percentage</span></li>
@@ -180,6 +207,10 @@
                 </ol>
             </div>
         </div>
+        <div class="bmi-right-content">
+
+        </div>
     </main>
 </body>
+
 </html>
