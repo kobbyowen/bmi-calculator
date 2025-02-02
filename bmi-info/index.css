@@ -10,55 +10,47 @@ body {
     background-color: #f8f2ef;
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 100;
 }
 
+h4{
+    padding: 0 ;
+    margin: 0
+}
+
+h4.bmi-section-subheading,
+h4.bmi-section-heading{
+    font-weight: 300;
+    font-size: 18px ;
+    color: black;
+    padding: 20px 0px ;
+}
 
 main {
     padding: 10px;
+    display: flex;
 }
 
-.bmi-intro-content h4:first-child {
-    text-align: center;
-    margin-bottom: 0;
-    font-size: 20px;
-    font-weight: 900;
-    font-size: 30px;
+.bmi-large-text{
+    font-size: 50px;
 }
 
-.bmi-section-text {
-    margin-top: 0;
-    font-size: 15px;
+.bmi-break {
+    display: block;
+    font-weight: 100;
+    color: #555 ;
+    font-size: 40px;
+    
+}
+
+
+.bmi-section-text{
     text-align: justify;
+    line-height: 25px;
+    color: #555 ;
 }
 
-.bmi-section-subheading,
-.bmi-section-heading {
-    font-size: 20px;
-}
-
-
-.bmi-importance-content::before {
-    content: "";
-    display: inline-block;
-    width: 320px;
-    height: 300px;
-    background-image: url('BMIphoto1.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    vertical-align: middle;
-}
-
-.bmi-importance-content {
-    padding: 0;
-    margin: 0;
-}
-
-
-.bmi-text-bold {
-    font-weight: bold;
-}
 
 @media screen and (min-width: 481px) {}
 
@@ -68,56 +60,38 @@ main {
 
 
 @media screen and (min-width: 1200px) {
-    body {
-
-        font-family: 'Host Grotesk', Arial, Helvetica, sans-serif;
-        background-color: #f8f2ef;
-        margin: 0;
-        padding: 0;
-        font-size: 14px;
+    
+    body{
+        width: 100vw;
+        height: 100vh ;
+        padding: 5%  ;
     }
 
-    #bmi-main-content {
+    #bmi-content-container{
+        width: 50% ;
+        height : 60vh ;
+        overflow: auto;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
 
     }
 
-    #bmi-content-container {
-        width: 50vw;
-    }
-
-    .bmi-right-content {
-        background-color: #fff;
-        width: 50vw;
-    }
-
-
-
-    main {
-        padding: 20px;
-    }
-
-
-
-    .bmi-section-text {
-        font-size: 16px;
-        padding: 0px 30px 0px 0px;
-    }
-
-    .bmi-intro-content:nth-child(3) {
+    #bmi-sidebar-content {
         width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .bmi-importance-content::before {
-        content: "";
-        display: inline-block;
-        width: 100%;
-        height: 400px;
-        background-image: url('BMIphoto1.png');
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        vertical-align: middle;
+    #bmi-sidebar-content-wrapper{
+        width: 500px ;
+        height: 700px ;
+        background-color: white;
+        
     }
+
+    #bmi-content-container-wrapper{
+        width: 70%;
+    }
+
 }
