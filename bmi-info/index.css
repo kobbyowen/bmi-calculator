@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Host Grotesk', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 100;
+     background: #f8f2ef
+}
+
+
+  
+#bmi-content-container-wrapper::after {
+    content: "";
+    z-index: -1;
+    height: 85vh;
+    width: 70%;
+    position: absolute;
+    background: linear-gradient(#feeceb 0%,#feeceb  100%);
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 100%;
+  
+  }
+
+h4{
+    padding: 0 ;
+    margin: 0
+}
+
+h4.bmi-section-subheading,
+h4.bmi-section-heading{
+    font-weight: 300;
+    font-size: 18px ;
+    color: black;
+    padding: 20px 0px ;
+}
+
+main {
+    padding: 10px;
+    display: flex;
+}
+
+.bmi-large-text{
+    font-size: 50px;
+}
+
+.bmi-break {
+    display: block;
+    font-weight: 100;
+    color: #555 ;
+    font-size: 40px;
+    
+}
+
+
+.bmi-section-text{
+    text-align: justify;
+    line-height: 25px;
+    color: #555 ;
+}
+
+
+@media screen and (min-width: 481px) {}
+
+
+
+@media screen and(min-width: 768px) {}
+
+
+@media screen and (min-width: 1200px) {
+    
+    body{
+        width: 100vw;
+        height: 100vh ;
+        padding: 5%  ;
+    }
+
+    #bmi-content-container{
+        width: 50% ;
+        height : 60vh ;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    #bmi-sidebar-content {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #bmi-sidebar-content-wrapper{
+        width: 500px ;
+        height: 700px ;
+        background-color: white;
+        
+    }
+
+    #bmi-content-container-wrapper{
+        width: 70%;
+    }
+
+}
