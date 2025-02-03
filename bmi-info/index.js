@@ -4,9 +4,11 @@ const dots = document.createElement("div");
 dots.classList.add("bmi-dots-carousel");
 
 const arrayElements = Array.from(childrenElements);
-arrayElements.forEach((element) => {
+arrayElements.forEach((element, index) => {
   const dot = document.createElement("div");
-  dot.textContent = "T";
+  if (index === 0) {
+    dot.classList.add("active");
+  }
   dot.classList.add("bmi-carousel-dot");
   dots.appendChild(dot);
 });
