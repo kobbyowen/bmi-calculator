@@ -9,67 +9,92 @@ body {
     font-family: 'Host Grotesk', Arial, Helvetica, sans-serif;
     background-color: #f8f2ef;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     font-size: 16px;
     font-weight: 100;
 }
 
-h4{
-    padding: 0 ;
+h4 {
+    padding: 0;
     margin: 0
 }
 
 h4.bmi-section-subheading,
-h4.bmi-section-heading{
+h4.bmi-section-heading {
     font-weight: 300;
-    font-size: 18px ;
+    font-size: 18px;
     color: black;
-    padding: 20px 0px ;
+    padding: 20px 0px;
+    padding-bottom: 0px;
 }
 
 main {
     padding: 10px;
     display: flex;
+    flex-direction: column;
 }
 
-.bmi-large-text{
+#bmi-sidebar-content-wrapper {
+    width: 90vw;
+    height: 700px;
+    background-color: white;
+    margin-top: 50px;
+
+}
+
+.bmi-large-text {
     font-size: 50px;
+    line-height: 55px;
 }
 
 .bmi-break {
     display: block;
     font-weight: 100;
-    color: #555 ;
+    color: #555;
     font-size: 40px;
-    
+
 }
 
 
-.bmi-section-text{
+.bmi-section-text {
     text-align: justify;
     line-height: 25px;
-    color: #555 ;
+    color: #555;
 }
 
 
-@media screen and (min-width: 481px) {}
+@media screen and (min-width: 481px) {
+
+    main {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 
 
-@media screen and(min-width: 768px) {}
-
-
-@media screen and (min-width: 1200px) {
-    
-    body{
+@media screen and (min-width: 768px) {
+    body {
         width: 100vw;
-        height: 100vh ;
-        padding: 5%  ;
+        height: 100vh;
+        padding: 5%;
+        padding: 0;
     }
 
-    #bmi-content-container{
-        width: 50% ;
-        height : 60vh ;
+    main {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #bmi-content-container {
+        width: 50%;
+        height: 60vh;
         overflow: auto;
         display: flex;
         justify-content: center;
@@ -83,15 +108,73 @@ main {
         align-items: center;
     }
 
-    #bmi-sidebar-content-wrapper{
-        width: 500px ;
-        height: 700px ;
+    #bmi-sidebar-content-wrapper {
+        width: 500px;
+        height: 96vh;
         background-color: white;
-        
+        margin-top: 0px;
+
     }
 
-    #bmi-content-container-wrapper{
+    #bmi-content-container-wrapper {
         width: 70%;
+    }
+
+    .bmi-large-text {
+        font-size: 50px;
+        line-height: normal;
+    }
+}
+
+
+@media screen and (min-width: 1200px) {
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        padding: 5%;
+        padding: 0;
+    }
+
+    main {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #bmi-content-container {
+        width: 50%;
+        height: 60vh;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    #bmi-sidebar-content {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #bmi-sidebar-content-wrapper {
+        width: 500px;
+        height: 700px;
+        background-color: white;
+        margin-top: 0px;
+
+    }
+
+    #bmi-content-container-wrapper {
+        width: 70%;
+    }
+
+    .bmi-large-text {
+        font-size: 50px;
+        line-height: normal;
     }
 
 }
