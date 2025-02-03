@@ -6,8 +6,9 @@ dots.classList.add("bmi-dots-carousel");
 const arrayElements = Array.from(childrenElements);
 arrayElements.forEach((element) => {
   const dot = document.createElement("div");
+  dot.textContent = "T";
   dot.classList.add("bmi-carousel-dot");
   dots.appendChild(dot);
 });
 
-mainContainer.parent.appendChild(dots);
+mainContainer.appendChild(dots);
