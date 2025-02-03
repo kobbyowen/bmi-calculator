@@ -11,4 +11,4 @@ arrayElements.forEach((element) => {
   dots.appendChild(dot);
 });
 
-mainContainer.appendChild(dots);
+mainContainer.parentNode.appendChild(dots);
