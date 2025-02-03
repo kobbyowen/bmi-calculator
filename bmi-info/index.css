@@ -66,6 +66,29 @@ main {
     color: #555 ;
 }
 
+::-webkit-scrollbar {
+    width: 6px; 
+    height: 6px; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888 ;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+  
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent;
+  }
+
 .bmi-carousel {
     display: flex;
     flex-direction: column;
@@ -78,7 +101,7 @@ main {
   .bmi-dots-carousel {
     display: flex;
     gap: 10px;
-    margin: 30px auto;
+    margin: 50px auto 30px;
     width: 80%;
     justify-content: center;
     align-items: center;
