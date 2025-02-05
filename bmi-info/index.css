@@ -48,17 +48,11 @@ main {
     padding: 20px;
 }
 
-.bmi-large-text {
-    font-size: 28px;
-
-}
 
 .bmi-break {
     display: block;
     font-weight: 100;
     color: #555;
-    font-size: 26px;
-
 }
 
 
@@ -227,20 +221,33 @@ main {
     text-align: justify;
 }
 
+.bmi-large-text {
+    font-size: 3vw;
+}
 
-@media screen and (min-width: 481px) {
-    .bmi-large-text {
-        font-size: 50px;
-    }
+.bmi-break {
+    font-size: 2vw;
+}
 
-    .bmi-break {
-        font-size: 40px;
 
-    }
+@media screen and (max-width: 768px) {
 
-    #bmi-sidebar-content-wrapper {
+    
+
+    #bmi-content-container-wrapper {
         padding: 30px;
+        height: 85vh ;
+        overflow: scroll;
     }
+
+    .bmi-large-text {
+        font-size: 6vw;
+    }
+    
+    .bmi-break {
+        font-size: 5vw;
+    }
+
 }
 
 
@@ -251,9 +258,7 @@ main {
         display: flex;
     }
 
-    .bmi-large-text {
-        font-size: 50px;
-    }
+   
 
     .bmi-break {
         font-size: 40px;
@@ -262,6 +267,16 @@ main {
 
     #bmi-sidebar-content-wrapper {
         padding: 30px;
+        height: 85vh ;
+        overflow: auto;
+    }
+
+    .bmi-large-text {
+        font-size: 10vw;
+    }
+    
+    .bmi-break {
+        font-size: 8vw;
     }
 }
 
@@ -303,9 +318,6 @@ main {
 
     }
 
-    .bmi-large-text {
-        font-size: 50px;
-    }
 
     #bmi-content-container-wrapper {
         width: 80%;
