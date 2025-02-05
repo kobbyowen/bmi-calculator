@@ -54,7 +54,10 @@ main {
     font-weight: 100;
     color: #555;
 }
-
+.bmi-text-bold{
+    font-weight: bolder;
+    color: black 
+}
 
 .bmi-section-text {
     text-align: justify;
@@ -293,6 +296,23 @@ main {
         font-size: 8vw;
     }
 }
+
+li>ul {
+    list-style-position: outside;
+    padding: 0;
+    list-style-type: none;
+}
+
+.bmi-limitations-list>li {
+    padding: 10px 0;
+    text-align: justify;
+
+}
+
+.bmi-limitations-list{
+    padding-left: 20px;
+}
+
 
 
 @media screen and (min-width: 1200px) {
