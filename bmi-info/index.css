@@ -11,7 +11,8 @@ body {
     padding: 0;
     font-size: 16px;
     font-weight: 100;
-    background: #f8f2ef
+    background: #f8f2ef;
+    height: 100vh;
 }
 
 
@@ -48,14 +49,15 @@ main {
 }
 
 .bmi-large-text {
-    font-size: 50px;
+    font-size: 28px;
+
 }
 
 .bmi-break {
     display: block;
     font-weight: 100;
     color: #555;
-    font-size: 40px;
+    font-size: 26px;
 
 }
 
@@ -64,6 +66,8 @@ main {
     text-align: justify;
     line-height: 25px;
     color: #555;
+    /* padding: 0px;
+    margin: 0px; */
 }
 
 ::-webkit-scrollbar {
@@ -157,7 +161,7 @@ main {
 }
 
 #bmi-sidebar-content-wrapper {
-    padding: 30px;
+    padding: 10px;
 }
 
 .bmi-news-others {
@@ -224,7 +228,20 @@ main {
 }
 
 
-@media screen and (min-width: 481px) {}
+@media screen and (min-width: 481px) {
+    .bmi-large-text {
+        font-size: 50px;
+    }
+
+    .bmi-break {
+        font-size: 40px;
+
+    }
+
+    #bmi-sidebar-content-wrapper {
+        padding: 30px;
+    }
+}
 
 
 
@@ -232,6 +249,19 @@ main {
     main {
         padding: 10px;
         display: flex;
+    }
+
+    .bmi-large-text {
+        font-size: 50px;
+    }
+
+    .bmi-break {
+        font-size: 40px;
+
+    }
+
+    #bmi-sidebar-content-wrapper {
+        padding: 30px;
     }
 }
 
@@ -273,11 +303,24 @@ main {
 
     }
 
+    .bmi-large-text {
+        font-size: 50px;
+    }
+
     #bmi-content-container-wrapper {
         width: 80%;
         height: 80%;
         overflow: auto;
         padding-right: 20px;
+    }
+
+    .bmi-break {
+        font-size: 40px;
+
+    }
+
+    #bmi-sidebar-content-wrapper {
+        padding: 30px;
     }
 
 }
