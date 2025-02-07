@@ -274,11 +274,16 @@ h4:first-child {
 
 table {
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
     border: none;
     height: 30vh;
     margin-bottom: 20px;
 }
+
+table:hover {
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
 
 th {
     background-color: #888;
