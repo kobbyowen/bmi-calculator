@@ -97,7 +97,7 @@
     <main id="bmi-main-content">
       <div id="bmi-content-container">
         <div id="bmi-content-container-wrapper">
-          <div class="bmi-intro-section animation active-box">
+          <div class="bmi-intro-section bmi-active">
             <div class="bmi-intro-content">
               <h4 class="bmi-section-heading">
                 <span class="bmi-break">What is </span>
@@ -143,7 +143,7 @@
             </div>
           </div>
 
-          <div class="bmi-calculation-section animation">
+          <div class="bmi-calculation-section bmi-hidden">
             <div class="bmi-calculation-content">
               <h4 class="bmi-section-heading">
                 <span class="bmi-break">Formula for</span>
@@ -152,31 +152,36 @@
               <p class="bmi-section-text">
                 BMI is calculated using a simple mathematical formula:
               </p>
-              <p class="bmi-section-subheading">
-                <span class="bmi-text-bold">Formula for BMI</span>
-              </p>
-              <p class="bmi-formula">
-                BMI =
-                <math>
-                  <mfrac>
-                    <mn>Weight (kg)</mn>
-                    <mn>Height (m) ² </mn>
-                  </mfrac>
-                </math>
-              </p>
-              <p class="bmi-section-text">
-                Alternatively, if you are using
-                <span class="bmi-text-bold">pounds and inches:</span>
-              </p>
-              <p class="bmi-formula">
-                BMI =
-                <math>
-                  <mfrac>
-                    <mn>Weight (lbs) × 703</mn>
-                    <mn>Height (Inches) ² </mn>
-                  </mfrac>
-                </math>
-              </p>
+              <div class="bmi-formula-section">
+                <div>
+                  <p class="bmi-section-subheading">
+                    <span class="bmi-text-bold">KG and Meters</span>
+                  </p>
+                  <p class="bmi-formula">
+                    BMI =
+                    <math>
+                      <mfrac>
+                        <mn>Weight (kg)</mn>
+                        <mn>Height (m) ² </mn>
+                      </mfrac>
+                    </math>
+                  </p>
+                </div>
+                <div>
+                  <p class="bmi-section-text">
+                    <span class="bmi-text-bold">Pounds and Inches</span>
+                  </p>
+                  <p class="bmi-formula">
+                    BMI =
+                    <math>
+                      <mfrac>
+                        <mn>Weight (lbs) × 703</mn>
+                        <mn>Height (Inches) ² </mn>
+                      </mfrac>
+                    </math>
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div class="bmi-example-section">
@@ -194,14 +199,18 @@
                 <math>
                   <mfrac>
                     <mn>70</mn>
-                    <mn>(1.75)<sup>2</sup></mn>
+                    <mn>(1.75)²</mn>
                   </mfrac>
-                  =
+                </math>
+                =
+                <math>
                   <mfrac>
                     <mn>70</mn>
                     <mn>3.06</mn>
                   </mfrac>
-                  =
+                </math>
+                =
+                <math>
                   <mn>22.9</mn>
                 </math>
               </p>
@@ -214,7 +223,7 @@
             </div>
           </div>
 
-          <div class="bmi-interpretation-section animation">
+          <div class="bmi-interpretation-section bmi-hidden">
             <h4 class="bmi-section-heading">
               <span class="bmi-break">Interpreting Results For</span>
               <span class="bmi-large-text">Body Mass Index (BMI)?</span>
@@ -275,80 +284,53 @@
             </p>
           </div>
 
-          <div class="bmi-limitations-section animation">
+          <div class="bmi-limitations-section bmi-hidden">
             <h4 class="bmi-section-heading">
               <span class="bmi-break">Limitations of</span>
               <span class="bmi-large-text">Body Mass Index (BMI)?</span>
             </h4>
-            <p class="bmi-section-text">
-              While BMI is a useful
-              <span class="bmi-text-bold">general indicator of health,</span> it
-              has some limitations:
-            </p>
-            <ol class="bmi-limitations-list">
-              <li>
+            <div class="bmi-section">
+              <h2 class="bmi-section-title">BMI Limitations</h2>
+              <p class="bmi-section-text">
+                While BMI is a useful
+                <span class="bmi-text-bold">general indicator of health,</span>
+                it has some limitations:
+              </p>
+
+              <h4 class="bmi-section-heading">
+                Does Not Measure Body Fat Directly
+              </h4>
+              <p class="bmi-section-text">
+                BMI does not differentiate between
                 <span class="bmi-text-bold"
-                  >Does not Measure Body Fat Directly</span
+                  >fat mass and muscle mass. A very muscular athlete may have a
+                  high BMI but
+                  <span class="bmi-text-bold">low body fat.</span></span
                 >
-                <ul>
-                  <li>
-                    BMI does not differentiate between
-                    <span class="bmi-text-bold">fat mass and muscle mass.</span>
-                  </li>
-                  <li>
-                    A very muscular athlete may have a high BMI but
-                    <span class="bmi-text-bold">low body fat.</span>
-                  </li>
-                </ul>
-              </li>
-              <li>
+              </p>
+
+              <h4 class="bmi-section-heading">
+                Does Not Account for Age or Gender
+              </h4>
+              <p class="bmi-section-text">
                 <span class="bmi-text-bold"
-                  >Does Not Account for Age or Gender</span
+                  >Women naturally have more body fat</span
                 >
-                <ul>
-                  <li>
-                    <span class="bmi-text-bold"
-                      >Women naturally have more body fat</span
-                    >
-                    than men at the same BMI.
-                  </li>
-                  <li>
-                    Older adults may have
-                    <span class="bmi-text-bold">less muscle mass</span> but a
-                    normal BMI.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span class="bmi-text-bold"
-                  >Does Not Consider Fat Distribution</span
-                >
-                <ul>
-                  <li>
-                    Two people with the same BMI may
-                    <span class="bmi-text-bold">store fat differently</span>
-                    (e.g., around the stomach vs. hips), which impacts health
-                    risks differently.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                For a
-                <span class="bmi-text-bold">more accurate assessment,</span>
-                doctors may use additional measurements such as:
-                <ul>
-                  <li>Waist-to-hip ratio (WHR)</li>
-                  <li>
-                    <span class="bmi-text-bold">Body fat percentage</span>
-                  </li>
-                  <li>
-                    <span class="bmi-text-bold"
-                      >Blood pressure and cholesterol levels</span
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ol>
+                than men at the same BMI. Older adults may have
+                <span class="bmi-text-bold">less muscle mass</span> but a normal
+                BMI.
+              </p>
+
+              <h4 class="bmi-section-heading">
+                Does Not Consider Fat Distribution
+              </h4>
+              <p class="bmi-section-text">
+                Two people with the same BMI may
+                <span class="bmi-text-bold">store fat differently</span>
+                (e.g., around the stomach vs. hips), which impacts health risks
+                differently.
+              </p>
+            </div>
           </div>
         </div>
       </div>

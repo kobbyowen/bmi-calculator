@@ -39,6 +39,37 @@ h4.bmi-section-heading {
     padding: 20px 0px;
 }
 
+@keyframes animate-view {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.bmi-hidden {
+  display: none 
+}
+
+#bmi-main-content {
+  position: relative;
+}
+
+
+#bmi-main-content .bmi-active {
+  display: block;
+  animation: animate-view 1s ease-in ;
+  overflow: auto;
+  height: 100%;
+}
+
+.bmi-limitations-section h4.bmi-section-subheading,
+.bmi-limitations-section h4.bmi-section-heading{
+  padding: 0
+}
+
 .bmi-break {
     display: block;
     font-weight: 100;
@@ -90,8 +121,10 @@ h4.bmi-section-heading {
 
 * {
     scrollbar-width: thin;
-    scrollbar-color: #888 transparent;
+    scrollbar-color: transparent transparent;
 }
+
+
 
 .bmi-carousel {
     display: flex;
@@ -333,6 +366,11 @@ td:nth-child(even) {
 tr:nth-child(odd) {
     background-color: #ccc;
 
+}
+
+.bmi-formula-section{
+  display: flex ;
+  gap: 1vw;
 }
 
 @media screen and (max-width: 768px) {

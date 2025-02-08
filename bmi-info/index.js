@@ -13,23 +13,25 @@ arrayElements.forEach((element, index) => {
 
   dot.classList.add("bmi-carousel-dot");
   dots.appendChild(dot);
+  dot.addEventListener("click", (e) =>
+    showSection(e, index, [...childrenElements])
+  );
 });
 
 const dotsArray = Array.from(dots.children);
 
-dotsArray.forEach((dot, index2) => {
-  dot.addEventListener("click", (e) => {
-    dotsArray.forEach((dotElement) => dotElement.classList.remove("active"));
-    dot.classList.add("active");
-    arrayElements.forEach((element, idx) => {
-      if (idx === index2) {
-        element.classList.add("active-box");
-        element.scrollIntoView();
-      } else {
-        element.classList.remove("active-box");
-      }
-    });
-  });
-});
-
 mainContainer.parentNode.appendChild(dots);
+
+function showSection(e, index, sectionElements) {
+  const dotElements = [...document.querySelectorAll(".bmi-carousel-dot")];
+  console.log(dotElements, sectionElements, index);
+  sectionElements.forEach((el) => {
+    el.classList.remove("bmi-hidden");
+    el.classList.remove("bmi-active");
+    el.classList.add("bmi-hidden");
+  });
+  dotElements.forEach((el) => el.classList.remove("active"));
+  dotElements[index].classList.add("active");
+  sectionElements[index].classList.remove("bmi-hidden");
+  sectionElements[index].classList.add("bmi-active");
+}
