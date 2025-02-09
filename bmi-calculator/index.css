@@ -277,10 +277,9 @@ a{
     color: inherit;
   }
   
-
-header {
+  header {
     margin: 0 ;
-    width: 85vw ;
+    width: 100% ;
     margin: 0 auto ;
     height: 50px ;
     display: flex;
@@ -289,11 +288,15 @@ header {
     padding: 30px 0;
     color: rgba(211, 110, 60, 1);
     background-color: #faf5f2;
-    font-size: 1.2em;
-    font-weight: bolder;
     z-index: 100;
-  }
+    padding: 0px 7.5vw ;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
 
+.bmi-calculator-title{
+    margin-top: 0;
+}
 
 @media screen and (max-width: 768px) {
     main {
@@ -305,7 +308,6 @@ header {
 
     header {
         margin: 0 ;
-        width: 85vw ;
         margin: 0 auto ;
         height: 50px ;
         display: flex;
@@ -313,12 +315,11 @@ header {
         gap: 30px;
         position: sticky;
         top: 0 ;
-        background-color: ;
         align-items: center;
         padding: 30px 0;
         color: rgba(211, 110, 60, 1);
-        font-size: 1em;
-        font-weight: bolder;
+        font-size: 16px;
+        padding-left: 8%;
       }
 
     #bmi-form-section {

@@ -381,18 +381,22 @@ a.active-link{
   color: black ;
 }
 
+
 header {
-  margin: 0 ;
-  width: 100% ;
-  height: 50px ;
-  display: flex;
-  gap: 50px ;
-  align-items: center;
-  padding: 30px 5vw;
-  color: rgba(211, 110, 60, 1);
-  font-size: 1.2em;
-  font-weight: bolder;
+    margin: 0 ;
+    width: 100% ;
+    margin: 0 auto ;
+    height: 50px ;
+    display: flex;
+    gap: 50px ;
+    align-items: center;
+    padding: 30px 0;
+    color: rgba(211, 110, 60, 1);
+    background-color: #faf5f2;
+    z-index: 100;
+    padding: 0px 5vw
 }
+
 
 a.bmi-calculator-button{
   display: block;
@@ -440,10 +444,7 @@ a.bmi-calculator-button{
       top: 0 ;
       background-color: #faf5f2;
       align-items: center;
-      padding: 30px 3vw;
-      color: rgba(211, 110, 60, 1);
-      font-size: 1em;
-      font-weight: bolder;
+      padding: 20px;
       z-index: 100;
     }
 
@@ -500,6 +501,11 @@ a.bmi-calculator-button{
         font-size: 40px;
     }
 
+    .bmi-active{
+        overflow: auto;
+        height: 100%;
+    }
+    
     #bmi-sidebar-content-wrapper {
         padding: 30px;
     }

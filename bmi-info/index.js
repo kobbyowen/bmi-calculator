@@ -24,7 +24,6 @@ mainContainer.parentNode.appendChild(dots);
 
 function showSection(e, index, sectionElements) {
   const dotElements = [...document.querySelectorAll(".bmi-carousel-dot")];
-  console.log(dotElements, sectionElements, index);
   sectionElements.forEach((el) => {
     el.classList.remove("bmi-hidden");
     el.classList.remove("bmi-active");
