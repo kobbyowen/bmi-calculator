@@ -7,7 +7,7 @@
 body {
 
     font-family: 'Host Grotesk', Arial, Helvetica, sans-serif;
-    background-color: #fff;
+
     margin: 0;
     padding: 0;
     font-size: 14px;
@@ -268,6 +268,31 @@ main {
     font-weight: 100;
 }
 
+a.active-link{
+    color: black ;
+  }
+
+a{
+    text-decoration: none;
+    color: inherit;
+  }
+  
+
+header {
+    margin: 0 ;
+    width: 85vw ;
+    margin: 0 auto ;
+    height: 50px ;
+    display: flex;
+    gap: 50px ;
+    align-items: center;
+    padding: 30px 0;
+    color: rgba(211, 110, 60, 1);
+    background-color: #faf5f2;
+    font-size: 1.2em;
+    font-weight: bolder;
+    z-index: 100;
+  }
 
 
 @media screen and (max-width: 768px) {
@@ -277,6 +302,24 @@ main {
         margin: auto;
 
     }
+
+    header {
+        margin: 0 ;
+        width: 85vw ;
+        margin: 0 auto ;
+        height: 50px ;
+        display: flex;
+        justify-content: flex-start;
+        gap: 30px;
+        position: sticky;
+        top: 0 ;
+        background-color: ;
+        align-items: center;
+        padding: 30px 0;
+        color: rgba(211, 110, 60, 1);
+        font-size: 1em;
+        font-weight: bolder;
+      }
 
     #bmi-form-section {
         margin: 0px;
