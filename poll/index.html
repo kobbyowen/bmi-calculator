@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mental Slavery Self-Reflection Poll</title>
+    <style>
+      :root {
+        --bg-light: #f0f4f8;
+        --bg-dark: #1a202c;
+        --text-light: #333;
+        --text-dark: #f7fafc;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, var(--bg-light), #d9e2ec);
+        padding: 1rem;
+        margin: auto;
+        color: var(--text-light);
+        transition: background 0.3s, color 0.3s;
+      }
+      @media (min-width: 600px) {
+        body {
+          max-width: 900px;
+          padding: 2rem;
+        }
+      }
+      body.dark-mode {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+      }
+      .dark-mode .question,
+      .dark-mode .scale,
+      .dark-mode .modal-content {
+        background-color: #2d3748;
+        color: #f7fafc;
+      }
+      h1 {
+        text-align: center;
+        color: #102a43;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+      .toggle-mode {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+      .toggle-mode button {
+        background: #4a5568;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .question {
+        margin-bottom: 1.5rem;
+        background: #ffffff;
+        padding: 1.2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .question > p {
+        font-size: 25px;
+      }
+      .options label {
+        display: block;
+        margin: 0.5rem 0;
+        cursor: pointer;
+        padding: 0.25rem 0.5rem;
+        border-radius: 5px;
+      }
+      .options input[type="radio"] {
+        appearance: none;
+        background-color: #fff;
+        border: 2px solid #cbd5e0;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+      .options input[type="radio"]:checked {
+        background-color: #2f855a;
+        border-color: #2f855a;
+      }
+      button {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 1rem;
+        font-size: 1rem;
+        background-color: #2f855a;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #276749;
+      }
+      .scale {
+        margin-top: 2rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        background-color: #ffffff;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .progress {
+        text-align: center;
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 1.5rem;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+      }
+      .modal button.close {
+        margin-top: 1rem;
+        background: #e53e3e;
+      }
+
+      .modal-message.low {
+        background-color: #c6f6d5;
+        color: #22543d;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+      .modal-message.medium {
+        background-color: #fefcbf;
+        color: #744210;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+      .modal-message.high {
+        background-color: #fed7d7;
+        color: #9b2c2c;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mental Slavery Self-Reflection Poll</h1>
+    <div class="toggle-mode">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <form id="pollForm">
+      <div id="questions"></div>
+      <div class="progress" id="progress">0/10 answered</div>
+      <button type="submit">Check Status</button>
+      <button type="button" onclick="resetForm()">Retake Poll</button>
+    </form>
+    <div class="scale">
+      <h3>Scoring Scale</h3>
+      <p><strong>0 - 25</strong>: ✅ High Mental Independence</p>
+      <p><strong>26 - 40</strong>: ⚠️ Moderate Signs of Mental Conditioning</p>
+      <p><strong>41 - 50</strong>: 🚨 Strong Signs of Mental Slavery</p>
+    </div>
+    <div id="resultModal" class="modal">
+      <div class="modal-content" id="modalContent">
+        <p id="modalMessage"></p>
+        <button class="close" onclick="closeModal()">Dismiss</button>
+      </div>
+    </div>
+    <script>
+      const questions = [
+        "I often feel that success is something only ‘other people’ can achieve, not people like me.",
+        "I feel guilty or disloyal when I challenge the traditions or breaks a barrier that I personally haven’t.",
+        "I measure my self-worth primarily through comparison to others' success or lifestyle.",
+        "When faced with new opportunities, I assume I’m not qualified — even before trying.",
+        "I care more about appearing successful than being successful on my own terms.",
+        "I tend to accept the way things are because “that’s just how the world works.",
+        "I believe my culture or people or race are inherently inferior to others.",
+        "I trust the judgement of systems (example: media, institutions) more than my own critical thinking.",
+        "I rarely reflect on where my core beliefs or values come from.",
+        "I believe certain people or groups are ‘meant’ to lead, and others to follow.",
+      ];
+
+      const options = [
+        { label: "Strongly Agree", value: 5 },
+        { label: "Agree", value: 4 },
+        { label: "Neutral", value: 3 },
+        { label: "Disagree", value: 2 },
+        { label: "Strongly Disagree", value: 1 },
+      ];
+
+      const questionsContainer = document.getElementById("questions");
+      const progressDiv = document.getElementById("progress");
+
+      function updateProgress() {
+        const total = questions.length;
+        const answered = [...document.querySelectorAll("input:checked")].length;
+        progressDiv.textContent = `${answered}/${total} answered`;
+      }
+
+      questions.forEach((q, index) => {
+        const qDiv = document.createElement("div");
+        qDiv.className = "question";
+        qDiv.innerHTML = `<p><strong>Q${index + 1}:</strong> ${q}</p>`;
+        const optDiv = document.createElement("div");
+        optDiv.className = "options";
+        options.forEach((opt, i) => {
+          optDiv.innerHTML += `<label><input type="radio" name="q${index}" value="${opt.value}" required onchange="updateProgress()" /> ${opt.label}</label>`;
+        });
+        qDiv.appendChild(optDiv);
+        questionsContainer.appendChild(qDiv);
+      });
+
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+
+      function resetForm() {
+        document.getElementById("pollForm").reset();
+        document.getElementById("modalMessage").innerHTML = "";
+        document.getElementById("resultModal").style.display = "none";
+        updateProgress();
+      }
+
+      function closeModal() {
+        document.getElementById("resultModal").style.display = "none";
+      }
+
+      function downloadResult(score, category, message) {
+        const blob = new Blob(
+          [`Score: ${score}/50\nCategory: ${category}\n\n${message}`],
+          { type: "text/plain" }
+        );
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "mental_slavery_result.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      document
+        .getElementById("pollForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          let score = 0;
+          for (let [key, value] of formData.entries()) {
+            score += parseInt(value);
+          }
+          let category = "",
+            message = "",
+            resultClass = "";
+          if (score >= 41) {
+            category = "Strong Signs of Mental Slavery";
+            message =
+              "🚨 You show strong signs of mental slavery. Time to reclaim your mind and challenge the status quo.";
+            resultClass = "high";
+          } else if (score >= 26) {
+            category = "Moderate Signs of Mental Conditioning";
+            message =
+              "⚠️ You show moderate signs of mental conditioning. Awareness is the first step toward mental freedom.";
+            resultClass = "medium";
+          } else {
+            category = "High Mental Independence";
+            message =
+              "✅ You exhibit high mental independence. Keep thinking critically and growing freely.";
+            resultClass = "low";
+          }
+
+          const modal = document.getElementById("resultModal");
+          const modalMessage = document.getElementById("modalMessage");
+          modalMessage.className = `modal-message ${resultClass}`;
+          modalMessage.innerHTML = `<p>Your score is <strong>${score}/50</strong></p><p>${message}</p>
+      <button onclick="downloadResult(${score}, '${category}', \`${message}\`)" style="margin-top: 1rem;">Download Result</button>`;
+          modal.style.display = "block";
+        });
+    </script>
+
+    <script>
+      (async () => {
+        const BIN_URL = "https://api.jsonbin.io/v3/b/6854216c8561e97a50273e3c";
+        const MASTER_KEY =
+          "$2a$10$3E5vGBeg8YZf7uG6mibKfOcalgmEyQG8TBCT1KQw/ZQ2drVYWsC7m";
+
+        try {
+          const getRes = await fetch(BIN_URL + "/latest", {
+            headers: {
+              "X-Master-Key": MASTER_KEY,
+            },
+          });
+          const data = await getRes.json();
+          const current = data.record.count || 0;
+
+          const newCount = current + 1;
+
+          await fetch(BIN_URL, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Master-Key": MASTER_KEY,
+            },
+            body: JSON.stringify({ count: newCount }),
+          });
+        } catch (err) {
+          console.error("Error updating visit count:", err);
+        }
+      })();
+    </script>
+  </body>
+</html>
